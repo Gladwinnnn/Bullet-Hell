@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6341a7686c767e44195e772007dfd236, type: 3}
+  m_Name: Player Data
+  m_EditorClassIdentifier: 
+  moveForce: 10
+  meleeCoolDown: 1
+  shootCoolDown: 0.5
+  shootForce: 10
+  moveForceRestriction: 5
+  bulletPrefab: {fileID: 12249723816729958, guid: 31c772e1561ba824c9d979a5cc513093, type: 3}
+  grenadeCoolDown: 10
+  grenadeForce: 5
+  grenadePrefab: {fileID: 0}
