@@ -35,14 +35,6 @@ public class MeleeEnemy : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "PlayerDamage")
-        {
-            lifePoints -= 1;
-        }
-    }
-
     void Die() 
     {
         Destroy(gameObject);
