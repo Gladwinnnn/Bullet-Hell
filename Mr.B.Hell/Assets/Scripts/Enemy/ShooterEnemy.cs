@@ -14,14 +14,13 @@ public class ShooterEnemy : MonoBehaviour
     [SerializeField] float projectileSpeed = 10f;
     float countDownToFire = 1.5f, speed = 1f;
 
-    [SerializeField] GameObject player;
+    Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
     }
-
     // Update is called once per frame
     void Update()
     {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 10
   meleeCoolDown: 1
-  shootCoolDown: 0.5
+  shootCoolDown: 0.2
   shootForce: 10
   moveForceRestriction: 5
   bulletPrefab: {fileID: 194219363435563332, guid: 75933ef53e2691543aab98d77398cfe4, type: 3}

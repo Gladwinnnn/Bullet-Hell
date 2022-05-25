@@ -20,6 +20,7 @@ public class PlayerShootState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
+        player.Shoot(playerData.bulletPrefab, playerData.shootForce);
     }
 
     public override void Exit()

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerAbilityState : PlayerState
 {
-    protected float cooldown;
-
     protected int xInput;
     protected int yInput;
     protected Vector2 mousePos;
@@ -46,5 +44,4 @@ public class PlayerAbilityState : PlayerState
         base.PhysicsUpdate();
     }
 
-    public bool isReady() => Time.time >= startTime + cooldown;
 }

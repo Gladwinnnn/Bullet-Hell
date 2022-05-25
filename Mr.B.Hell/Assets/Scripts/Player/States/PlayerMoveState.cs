@@ -39,7 +39,7 @@ public class PlayerMoveState : PlayerState
 
         player.Movement.Look(mousePos);
 
-        if (player.CanShoot && secondaryAttackInput && player.ShootState.isReady())
+        if (player.CanShoot && secondaryAttackInput)
         {
             stateMachine.ChangeState(player.ShootState);
         }

@@ -151,4 +151,3 @@ MonoBehaviour:
   shootDamage: 1
   laserPrefab: {fileID: 3748383302066016102, guid: 045d6bb6f29dd10499c7a667e7e3f54d, type: 3}
   projectileSpeed: 5
-  player: {fileID: 3121752240792267909, guid: 65d78ac503b805344b7e671187982792, type: 3}

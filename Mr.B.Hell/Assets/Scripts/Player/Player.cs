@@ -55,6 +55,8 @@ public class Player : MonoBehaviour
 
         StateMachine.Initialize(MoveState);
 
+        CanShoot = true;
+        CanGrenade = true;
     }
 
     private void Update()
