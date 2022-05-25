@@ -7,11 +7,13 @@ public class PlayerMovement
 
     private PlayerData playerData;
     private Rigidbody2D RB;
+    private Transform playerTransform;
 
-    public PlayerMovement(PlayerData data, Rigidbody2D RB)
+    public PlayerMovement(PlayerData data, Rigidbody2D RB, Transform transform)
     {
         this.playerData = data;
         this.RB = RB;
+        this.playerTransform = transform;
     }
 
     public void Move(float xInput, float yInput, float moveForce)
@@ -23,8 +25,10 @@ public class PlayerMovement
 
     public void Look(Vector2 mosPos)
     {
-        Vector2 lookDir = mosPos - RB.position;
-        float angle = Mathf.Atan2(lookDir.x, lookDir.y) * Mathf.Rad2Deg + 90f;
-        RB.rotation = angle;
+        playerTransform.up = mosPos;
+
+        //Vector2 lookDir = mosPos;
+        //float angle = Mathf.Atan2(lookDir.x, lookDir.y) * Mathf.Rad2Deg - 90f;
+        //RB.rotation = angle;
     }
 }

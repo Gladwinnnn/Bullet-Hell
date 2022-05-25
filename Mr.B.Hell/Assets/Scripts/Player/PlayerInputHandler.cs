@@ -80,21 +80,18 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnLookInput(InputAction.CallbackContext context)
     {
-        //Debug.Log(context.ReadValue<Vector2>());
 
-        if (context.started)
+        RawMouseInput = context.ReadValue<Vector2>();
+
+        if (playerInput.currentControlScheme == "Keyboard&Mouse")
         {
-            RawMouseInput = context.ReadValue<Vector2>();
-
-            if (playerInput.currentControlScheme == "Keyboard&Mouse")
-            {
-                RawMouseInput = cam.ScreenToWorldPoint((Vector3)RawMouseInput) - transform.position;
-            }
-
-            Vector3 mousePosition = Input.mousePosition;
-            RawMouseInput = Camera.main.ScreenToWorldPoint(mousePosition);
-
-            print(mousePosition);
+            RawMouseInput = cam.ScreenToWorldPoint((Vector3)RawMouseInput) - transform.position;
         }
+
+        //print("mevi" + RawMouseInput);
+        //Vector3 mousePosition = Input.mousePosition;
+        //RawMouseInput = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        //print(RawMouseInput);
     }
 }

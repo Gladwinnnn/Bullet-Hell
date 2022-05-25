@@ -4,19 +4,47 @@ using UnityEngine;
 
 public class PlayerAbilityState : PlayerState
 {
+    protected float cooldown;
+
+    protected int xInput;
+    protected int yInput;
+    protected Vector2 mousePos;
+
     public PlayerAbilityState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
+
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public override void DoChecks()
     {
-        
+        base.DoChecks();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Enter()
     {
-        
+        base.Enter();
     }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+
+        xInput = player.InputHandler.NormInputX;
+        yInput = player.InputHandler.NormInputY;
+        mousePos = player.InputHandler.RawMouseInput;
+
+        player.Movement.Look(mousePos);
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+    }
+
+    public bool isReady() => Time.time >= startTime + cooldown;
 }
