@@ -12,7 +12,7 @@ public class ShooterEnemy : MonoBehaviour
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileSpeed = 10f;
-    float countDownToFire = 1.5f, fireDuration = 0.01f, speed = 1f;
+    float countDownToFire = 1.5f, speed = 1f;
 
     [SerializeField] GameObject player;
 
@@ -47,16 +47,7 @@ public class ShooterEnemy : MonoBehaviour
         {
             GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
             laser.GetComponent<Rigidbody2D>().velocity = (player.transform.position - transform.position).normalized * projectileSpeed;
-
-            if (fireDuration <= 0)
-            {
-                countDownToFire = 1.5f;
-                fireDuration = 0.01f;
-            }
-            else
-            {
-                fireDuration -= Time.deltaTime * speed;
-            }
+            countDownToFire = 1.5f;
         }
         else
         {
