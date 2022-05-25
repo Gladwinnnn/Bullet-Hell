@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] float minSpawnDelay = 0.5f;
     [SerializeField] float maxSpawnDelay = 2f;
-    [SerializeField] GameObject enemy;
+    [SerializeField] GameObject[] enemy;
 
     IEnumerator Start()
     {
@@ -29,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
         float yCoordinates = Random.Range(-4.5f, 4.5f);
         float xCoordinates = Random.Range(-8.3f, 8.3f);
         Vector2 spawnLocation = new Vector2(xCoordinates, yCoordinates);
-        Instantiate(enemy, spawnLocation, Quaternion.identity);
+        int enemyToSpawn = Random.Range(0,enemy.Length);
+        Instantiate(enemy[enemyToSpawn], spawnLocation, Quaternion.identity);
     }
 }
