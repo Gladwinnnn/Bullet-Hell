@@ -273,6 +273,17 @@
                     "action": "Seconday Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52c5049b-4838-4d3b-ac75-d99bde69962d",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Seconday Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
