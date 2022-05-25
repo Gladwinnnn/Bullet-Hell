@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerShootState : PlayerAbilityState
 {
-    private bool secondaryAttackInput;
-    
-
 
     public PlayerShootState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -32,8 +29,6 @@ public class PlayerShootState : PlayerAbilityState
     {
         base.LogicUpdate();
 
-        secondaryAttackInput = player.InputHandler.SecondaryAttackInput;
-
         if(!secondaryAttackInput)
         {
             stateMachine.ChangeState(player.MoveState);
@@ -44,6 +39,11 @@ public class PlayerShootState : PlayerAbilityState
             startTime = Time.time;
             player.Shoot(playerData.bulletPrefab, playerData.shootForce);
         }
+
+        if (player.CanGrenade && specialAttackInput && player.GrenadeState.canFire())
+        {
+            stateMachine.ChangeState(player.GrenadeState);
+        }
     }
 
     public override void PhysicsUpdate()
@@ -52,4 +52,7 @@ public class PlayerShootState : PlayerAbilityState
 
         player.Movement.Move(xInput, yInput, playerData.moveForceRestriction);
     }
+
+    public bool canFire() => Time.time >= startTime + playerData.shootCoolDown;
+
 }

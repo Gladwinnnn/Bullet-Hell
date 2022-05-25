@@ -6,10 +6,9 @@ public class PlayerGrenadeState : PlayerAbilityState
 {
     private float cooldown;
 
-
     public PlayerGrenadeState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
-        cooldown = playerData.grenadeCoolDown;
+
     }
 
     public override void DoChecks()
@@ -20,6 +19,10 @@ public class PlayerGrenadeState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
+        
+        player.Shoot(playerData.grenadePrefab, playerData.grenadeForce);
+        stateMachine.ChangeState(player.MoveState);
+        cooldown = playerData.grenadeCoolDown;
     }
 
     public override void Exit()
@@ -35,6 +38,8 @@ public class PlayerGrenadeState : PlayerAbilityState
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
+
+        player.Movement.Move(xInput, yInput, playerData.moveForce);
     }
 
     public bool canFire() => Time.time >= startTime + cooldown;

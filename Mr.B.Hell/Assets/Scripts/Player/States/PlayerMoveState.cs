@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerState
 {
-    private int xInput;
-    private int yInput;
-    private Vector2 mousePos;
+
     private bool secondaryAttackInput;
+    private bool specialAttackInput;
+
 
     public PlayerMoveState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -32,17 +32,19 @@ public class PlayerMoveState : PlayerState
     {
         base.LogicUpdate();
 
-        xInput = player.InputHandler.NormInputX;
-        yInput = player.InputHandler.NormInputY;
-        mousePos = player.InputHandler.RawMouseInput;
         secondaryAttackInput = player.InputHandler.SecondaryAttackInput;
+        specialAttackInput = player.InputHandler.SpecialAttackInput;
 
-        player.Movement.Look(mousePos);
-
-        if (player.CanShoot && secondaryAttackInput)
+        if (player.CanShoot && secondaryAttackInput && player.ShootState.canFire())
         {
             stateMachine.ChangeState(player.ShootState);
         }
+        else if (player.CanGrenade && specialAttackInput && player.GrenadeState.canFire())
+        {
+            stateMachine.ChangeState(player.GrenadeState);
+        }
+
+        Debug.Log(player.GrenadeState.canFire());
     }
 
     public override void PhysicsUpdate()

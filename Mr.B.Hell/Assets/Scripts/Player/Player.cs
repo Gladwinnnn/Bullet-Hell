@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public PlayerStateMachine StateMachine { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
     public PlayerShootState ShootState { get; private set; }
+    public PlayerGrenadeState GrenadeState { get; private set; }
 
 
     [SerializeField]
@@ -42,6 +43,8 @@ public class Player : MonoBehaviour
 
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
         ShootState = new PlayerShootState(this, StateMachine, playerData, "shoot");
+        GrenadeState = new PlayerGrenadeState(this, StateMachine, playerData, "grenade");
+
     }
 
     // Start is called before the first frame update
@@ -75,7 +78,6 @@ public class Player : MonoBehaviour
         GameObject temp = Instantiate(projectile, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = temp.GetComponent<Rigidbody2D>();
 
-        print(firePoint.up * force);
         rb.AddForce(firePoint.up * force, ForceMode2D.Impulse);
     }
 

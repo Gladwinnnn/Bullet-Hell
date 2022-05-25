@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerAbilityState : PlayerState
 {
-    protected int xInput;
-    protected int yInput;
-    protected Vector2 mousePos;
 
     public PlayerAbilityState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -32,11 +29,6 @@ public class PlayerAbilityState : PlayerState
     {
         base.LogicUpdate();
 
-        xInput = player.InputHandler.NormInputX;
-        yInput = player.InputHandler.NormInputY;
-        mousePos = player.InputHandler.RawMouseInput;
-
-        player.Movement.Look(mousePos);
     }
 
     public override void PhysicsUpdate()

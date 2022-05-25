@@ -7,6 +7,7 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerInput playerInput;
     private Camera cam;
+    private CursorManager cursorManager;
 
     public Vector2 RawMouseInput { get; private set; }
     public Vector2 RawMovementInput { get; private set; }
@@ -21,7 +22,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         cam = Camera.main;
-
+        cursorManager = FindObjectOfType<CursorManager>();
     }
 
     // Update is called once per frame
@@ -83,9 +84,11 @@ public class PlayerInputHandler : MonoBehaviour
 
         RawMouseInput = context.ReadValue<Vector2>();
 
+        cursorManager.SetCursorPos(cam.ScreenToWorldPoint(RawMouseInput));
+
         if (playerInput.currentControlScheme == "Keyboard&Mouse")
         {
-            RawMouseInput = cam.ScreenToWorldPoint((Vector3)RawMouseInput) - transform.position;
+            RawMouseInput = cam.ScreenToWorldPoint(RawMouseInput) - transform.position;
         }
 
         //print("mevi" + RawMouseInput);

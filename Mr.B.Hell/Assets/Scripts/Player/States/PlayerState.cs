@@ -6,11 +6,17 @@ public class PlayerState
     protected PlayerStateMachine stateMachine;
     protected PlayerData playerData;
 
-    protected bool isExitingState;
-
     private string animBoolName;
 
     protected float startTime;
+
+    protected int xInput;
+    protected int yInput;
+    protected bool secondaryAttackInput;
+    protected bool specialAttackInput;
+
+    private Vector2 mousePos;
+    
 
     public PlayerState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName)
     {
@@ -25,19 +31,23 @@ public class PlayerState
         DoChecks();
         //player.Anim.SetBool(animBoolName, true);
         startTime = Time.time;
-        //Debug.Log(animBoolName);
-        isExitingState = false;
     }
 
     public virtual void Exit()
     {
         //player.Anim.SetBool(animBoolName, false);
-        isExitingState = true;
     }
 
     public virtual void LogicUpdate()
     {
         //Clamp here
+        xInput = player.InputHandler.NormInputX;
+        yInput = player.InputHandler.NormInputY;
+        secondaryAttackInput = player.InputHandler.SecondaryAttackInput;
+        specialAttackInput = player.InputHandler.SpecialAttackInput;
+
+        mousePos = player.InputHandler.RawMouseInput;
+        player.Movement.Look(mousePos);
     }
 
     public virtual void PhysicsUpdate()
