@@ -20,7 +20,7 @@ public class TankEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Move();
+        Move();
 
         if (lifePoints == 0)
         {
