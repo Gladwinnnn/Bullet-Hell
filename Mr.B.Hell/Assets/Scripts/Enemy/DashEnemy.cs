@@ -9,21 +9,22 @@ public class DashEnemy : MonoBehaviour
     [SerializeField] int lifePoints = 5;
     [SerializeField] int dashDamage = 1;
 
+    [SerializeField] float dashForce = 15f;
     Player player;
-
-    float countDownToDash = 2f, dashDuration = 0.25f, speed = 1f;
+    Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
-        SuddenDash();
+        // Dash();
 
         if (lifePoints == 0)
         {
@@ -38,35 +39,14 @@ public class DashEnemy : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
     }
 
-    void SuddenDash()
+    void Dash()
     {
-        float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (Mathf.Abs(distance) <= 5.5f)
+        float distanceFromPlayer = Vector2.Distance(transform.position, player.transform.position);
+        if (Mathf.Abs(distanceFromPlayer) <= 4f)
         {
-            moveSpeed = 0f;
-            if (countDownToDash <= 0)
-            {
-                moveSpeed = 10f;
-
-                if (dashDuration <= 0)
-                {
-                    countDownToDash = 2f;
-                    dashDuration = 0.25f;
-                }
-                else
-                {
-                    dashDuration -= Time.deltaTime * speed;
-                }
-            }
-            else
-            {
-                moveSpeed = 1f;
-                countDownToDash -= Time.deltaTime * speed;
-            }
-        }
-        else
-        {
-            moveSpeed = 1f;
+            Vector2 distance = player.transform.position - transform.position;
+            distance.Normalize();
+            rb.AddForce(distance * dashForce, ForceMode2D.Impulse);
         }
     }
 
