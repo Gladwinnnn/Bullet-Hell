@@ -10,7 +10,6 @@ public class DashEnemy : MonoBehaviour
     [SerializeField] int dashDamage = 1;
 
     Player player;
-    Rigidbody2D rigidbody;
 
     float countDownToDash = 2f, dashDuration = 0.25f, speed = 1f;
 
@@ -18,7 +17,6 @@ public class DashEnemy : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>();
-        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
