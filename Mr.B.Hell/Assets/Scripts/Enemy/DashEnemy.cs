@@ -41,7 +41,7 @@ public class DashEnemy : MonoBehaviour
     void SuddenDash()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (Mathf.Abs(distance) <= 5f)
+        if (Mathf.Abs(distance) <= 5.5f)
         {
             moveSpeed = 0f;
             if (countDownToDash <= 0)
