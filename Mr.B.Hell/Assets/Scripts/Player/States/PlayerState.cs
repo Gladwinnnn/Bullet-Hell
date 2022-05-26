@@ -14,7 +14,7 @@ public class PlayerState
     protected int yInput;
     protected bool secondaryAttackInput;
     protected bool specialAttackInput;
-
+    protected bool primaryAttackInput;
     private Vector2 mousePos;
     
 
@@ -43,11 +43,13 @@ public class PlayerState
         //Clamp here
         xInput = player.InputHandler.NormInputX;
         yInput = player.InputHandler.NormInputY;
+        primaryAttackInput = player.InputHandler.PrimaryAttackInput;
         secondaryAttackInput = player.InputHandler.SecondaryAttackInput;
         specialAttackInput = player.InputHandler.SpecialAttackInput;
 
         mousePos = player.InputHandler.RawMouseInput;
-        player.Movement.Look(mousePos);
+
+        player.Movement.Look(mousePos - (Vector2) player.transform.position);
     }
 
     public virtual void PhysicsUpdate()

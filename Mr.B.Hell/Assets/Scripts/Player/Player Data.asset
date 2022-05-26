@@ -13,11 +13,16 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: 
   moveForce: 10
-  meleeCoolDown: 1
+  chargeCoolDown: 3
+  shake: 0.05
+  maxChargeTime: 4
+  chargeTime: 1
+  dashForce: 20
+  dashTime: 0.5
   shootCoolDown: 0.2
   shootForce: 10
   moveForceRestriction: 5
   bulletPrefab: {fileID: 194219363435563332, guid: 75933ef53e2691543aab98d77398cfe4, type: 3}
   grenadeCoolDown: 10
   grenadeForce: 5
-  grenadePrefab: {fileID: 0}
+  grenadePrefab: {fileID: 8415395071151376268, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}

@@ -28,7 +28,12 @@ public class PlayerInputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(Screen.width);
+        //Debug.Log(Screen.height);
+        //RawMouseInput = new Vector2(Mathf.Clamp(RawMouseInput.x, -Screen.width, Screen.width), Mathf.Clamp(RawMouseInput.y, -Screen.height, Screen.height));
+
+        cursorManager.SetCursorPos(RawMouseInput);
+
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)
@@ -84,11 +89,11 @@ public class PlayerInputHandler : MonoBehaviour
 
         RawMouseInput = context.ReadValue<Vector2>();
 
-        cursorManager.SetCursorPos(cam.ScreenToWorldPoint(RawMouseInput));
+        //cursorManager.SetCursorPos(cam.ScreenToWorldPoint(RawMouseInput));
 
         if (playerInput.currentControlScheme == "Keyboard&Mouse")
         {
-            RawMouseInput = cam.ScreenToWorldPoint(RawMouseInput) - transform.position;
+            RawMouseInput = cam.ScreenToWorldPoint(RawMouseInput);
         }
 
         //print("mevi" + RawMouseInput);

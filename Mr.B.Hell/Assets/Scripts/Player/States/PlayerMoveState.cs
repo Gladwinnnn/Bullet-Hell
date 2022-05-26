@@ -5,10 +5,6 @@ using UnityEngine;
 public class PlayerMoveState : PlayerState
 {
 
-    private bool secondaryAttackInput;
-    private bool specialAttackInput;
-
-
     public PlayerMoveState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -32,10 +28,11 @@ public class PlayerMoveState : PlayerState
     {
         base.LogicUpdate();
 
-        secondaryAttackInput = player.InputHandler.SecondaryAttackInput;
-        specialAttackInput = player.InputHandler.SpecialAttackInput;
-
-        if (player.CanShoot && secondaryAttackInput && player.ShootState.canFire())
+        if(primaryAttackInput && player.ChargeState.canFire())
+        {
+            stateMachine.ChangeState(player.ChargeState);
+        }
+        else if (player.CanShoot && secondaryAttackInput && player.ShootState.canFire())
         {
             stateMachine.ChangeState(player.ShootState);
         }
@@ -44,7 +41,6 @@ public class PlayerMoveState : PlayerState
             stateMachine.ChangeState(player.GrenadeState);
         }
 
-        Debug.Log(player.GrenadeState.canFire());
     }
 
     public override void PhysicsUpdate()

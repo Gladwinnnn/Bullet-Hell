@@ -24,7 +24,7 @@ public class DashEnemy : MonoBehaviour
     void Update()
     {
         Move();
-        // Dash();
+        Dash();
 
         if (lifePoints == 0)
         {
@@ -42,10 +42,16 @@ public class DashEnemy : MonoBehaviour
     void Dash()
     {
         float distanceFromPlayer = Vector2.Distance(transform.position, player.transform.position);
-        if (Mathf.Abs(distanceFromPlayer) <= 4f)
+
+        if (Mathf.Abs(distanceFromPlayer) <= 5f)
         {
+            //delete all the print pls i lazy :)
+            print(distanceFromPlayer);
             Vector2 distance = player.transform.position - transform.position;
+            print(distance);
             distance.Normalize();
+            print(distance);
+
             rb.AddForce(distance * dashForce, ForceMode2D.Impulse);
         }
     }

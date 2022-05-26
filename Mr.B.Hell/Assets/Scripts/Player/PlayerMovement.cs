@@ -31,4 +31,14 @@ public class PlayerMovement
         //float angle = Mathf.Atan2(lookDir.x, lookDir.y) * Mathf.Rad2Deg - 90f;
         //RB.rotation = angle;
     }
+
+    public void Dash(Transform direction, float force)
+    {
+        RB.AddForce(direction.up * force, ForceMode2D.Impulse);
+    }
+
+    public void Zero()
+    {
+        RB.velocity = Vector2.zero;
+    }
 }

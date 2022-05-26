@@ -8,8 +8,15 @@ public class PlayerData : ScriptableObject
     [Header("Movement")]
     public float moveForce;
 
-    [Header("Melee")]
-    public float meleeCoolDown;
+    [Header("Charge")]
+    public float chargeCoolDown;
+    public float shake;
+    public float maxChargeTime;
+    public float chargeTime;
+
+    [Header("Dash")]
+    public float dashForce;
+    public float dashTime;
 
     [Header("Shooter")]
     public float shootCoolDown;

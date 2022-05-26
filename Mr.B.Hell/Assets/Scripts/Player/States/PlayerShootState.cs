@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerShootState : PlayerAbilityState
 {
-
+    float lastShootTime;
     public PlayerShootState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -18,6 +18,7 @@ public class PlayerShootState : PlayerAbilityState
     {
         base.Enter();
         player.Shoot(playerData.bulletPrefab, playerData.shootForce);
+        lastShootTime = startTime;
     }
 
     public override void Exit()
@@ -34,9 +35,9 @@ public class PlayerShootState : PlayerAbilityState
             stateMachine.ChangeState(player.MoveState);
         }
 
-        if (secondaryAttackInput && Time.time >= startTime + playerData.shootCoolDown)
+        if (secondaryAttackInput && Time.time >= lastShootTime + playerData.shootCoolDown)
         {
-            startTime = Time.time;
+            lastShootTime = Time.time;
             player.Shoot(playerData.bulletPrefab, playerData.shootForce);
         }
 
@@ -53,6 +54,6 @@ public class PlayerShootState : PlayerAbilityState
         player.Movement.Move(xInput, yInput, playerData.moveForceRestriction);
     }
 
-    public bool canFire() => Time.time >= startTime + playerData.shootCoolDown;
+    public bool canFire() => Time.time >= lastShootTime + playerData.shootCoolDown;
 
 }

@@ -6,9 +6,11 @@ public class Player : MonoBehaviour
 {
 
     #region State Variables
-    
+
     public PlayerStateMachine StateMachine { get; private set; }
     public PlayerMoveState MoveState { get; private set; }
+    public PlayerChargeState ChargeState { get; private set; }
+    public PlayerDashState DashState { get; private set; }
     public PlayerShootState ShootState { get; private set; }
     public PlayerGrenadeState GrenadeState { get; private set; }
 
@@ -42,6 +44,8 @@ public class Player : MonoBehaviour
         StateMachine = new PlayerStateMachine();
 
         MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
+        ChargeState = new PlayerChargeState(this, StateMachine, playerData, "charge");
+        DashState = new PlayerDashState(this, StateMachine, playerData, "dash");
         ShootState = new PlayerShootState(this, StateMachine, playerData, "shoot");
         GrenadeState = new PlayerGrenadeState(this, StateMachine, playerData, "grenade");
 
@@ -54,7 +58,7 @@ public class Player : MonoBehaviour
         Anim = GetComponent<Animator>();
         RB = GetComponent<Rigidbody2D>();
 
-        Movement = new PlayerMovement(playerData, RB, transform); 
+        Movement = new PlayerMovement(playerData, RB, transform);
 
         StateMachine.Initialize(MoveState);
 
@@ -81,4 +85,5 @@ public class Player : MonoBehaviour
         rb.AddForce(firePoint.up * force, ForceMode2D.Impulse);
     }
 
+    public Transform GetFirePoint() => firePoint;
 }
