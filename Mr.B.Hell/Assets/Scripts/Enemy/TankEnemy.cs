@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class TankEnemy : MonoBehaviour
 {
-[Header("Enemy Stats")]
+    [Header("Enemy Stats")]
     [SerializeField] float moveSpeed = 0.25f;
     [SerializeField] int lifePoints = 20;
     [SerializeField] int meleeDamage = 1;
 
-    [SerializeField] GameObject player;
+    Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        // Move();
 
         if (lifePoints == 0)
         {

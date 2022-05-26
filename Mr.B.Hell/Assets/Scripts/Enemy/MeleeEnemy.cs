@@ -9,12 +9,12 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField] int lifePoints = 5;
     [SerializeField] int meleeDamage = 1;
 
-    [SerializeField] GameObject player;
+    Player player;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame

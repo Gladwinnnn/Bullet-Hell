@@ -10,9 +10,12 @@ public class ShooterEnemy : MonoBehaviour
     [SerializeField] int shootDamage = 1;
 
     [Header("Projectile")]
-    [SerializeField] GameObject laserPrefab;
+    [SerializeField] GameObject enemyFire;
     [SerializeField] float projectileSpeed = 10f;
     float countDownToFire = 1.5f, speed = 1f;
+
+    [Header("Fire Point")]
+    [SerializeField] private Transform firePoint;
 
     Player player;
 
@@ -21,6 +24,7 @@ public class ShooterEnemy : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
     }
+    
     // Update is called once per frame
     void Update()
     {
@@ -44,7 +48,7 @@ public class ShooterEnemy : MonoBehaviour
     {
         if (countDownToFire <= 0)
         {
-            GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+            GameObject laser = Instantiate(enemyFire, firePoint.transform.position, Quaternion.identity);
             laser.GetComponent<Rigidbody2D>().velocity = (player.transform.position - transform.position).normalized * projectileSpeed;
             countDownToFire = 1.5f;
         }
