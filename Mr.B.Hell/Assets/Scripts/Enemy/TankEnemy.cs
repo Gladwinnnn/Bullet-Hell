@@ -9,6 +9,11 @@ public class TankEnemy : MonoBehaviour
     [SerializeField] int lifePoints = 20;
     [SerializeField] int meleeDamage = 1;
 
+    [Header("Rotation")]
+    [SerializeField] bool rotate = true;
+    [SerializeField] float rotateSpeed = 1f;
+    float count = 1;
+
     Player player;
 
     // Start is called before the first frame update
@@ -21,6 +26,7 @@ public class TankEnemy : MonoBehaviour
     void Update()
     {
         Move();
+        Rotate();
 
         if (lifePoints == 0)
         {
@@ -33,6 +39,15 @@ public class TankEnemy : MonoBehaviour
         var targetPosition = player.transform.position;
         var movementThisFrame = moveSpeed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
+    }
+
+    void Rotate()
+    {
+        if(rotate)
+        {
+            transform.localRotation = Quaternion.Euler(0, 0, count);
+            count -= rotateSpeed;
+        }
     }
 
     void Die() 

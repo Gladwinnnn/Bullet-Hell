@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8254070771034321904}
   - component: {fileID: 8254070771034321919}
   - component: {fileID: 8254070771034321918}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DashEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb9bf58c1bc676f449b6183c01653446, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1965f355c61c3184184265d75f1fd412, type: 3}
   m_Color: {r: 1, g: 0.084591225, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.24, y: 0.24}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -149,4 +149,3 @@ MonoBehaviour:
   moveSpeed: 1
   lifePoints: 5
   dashDamage: 1
-  player: {fileID: 3121752240792267909, guid: 65d78ac503b805344b7e671187982792, type: 3}
