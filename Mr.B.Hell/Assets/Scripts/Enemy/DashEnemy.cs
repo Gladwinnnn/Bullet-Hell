@@ -10,13 +10,15 @@ public class DashEnemy : MonoBehaviour
     [SerializeField] int dashDamage = 1;
 
     Player player;
+    Rigidbody2D rigidbody;
 
-    float countDownToDash = 1.5f, dashDuration = 0.25f, speed = 1f;
+    float countDownToDash = 2f, dashDuration = 0.25f, speed = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -41,7 +43,7 @@ public class DashEnemy : MonoBehaviour
     void SuddenDash()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position);
-        if (Mathf.Abs(distance) <= 3.5f)
+        if (Mathf.Abs(distance) <= 5f)
         {
             moveSpeed = 0f;
             if (countDownToDash <= 0)
@@ -50,7 +52,7 @@ public class DashEnemy : MonoBehaviour
 
                 if (dashDuration <= 0)
                 {
-                    countDownToDash = 1.5f;
+                    countDownToDash = 2f;
                     dashDuration = 0.25f;
                 }
                 else
@@ -60,6 +62,7 @@ public class DashEnemy : MonoBehaviour
             }
             else
             {
+                moveSpeed = 1f;
                 countDownToDash -= Time.deltaTime * speed;
             }
         }
