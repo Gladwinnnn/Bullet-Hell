@@ -25,8 +25,7 @@ public class DashEnemy : MonoBehaviour
     void Update()
     {
         Move();
-        // Dash();
-        // StartCoroutine(PerformAttack());
+
         float distanceFromPlayer = Vector2.Distance(transform.position, player.transform.position);
         if (Mathf.Abs(distanceFromPlayer) <= 5f && dashState)
         {
