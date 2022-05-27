@@ -9,20 +9,28 @@ public class DashEnemy : MonoBehaviour
     [SerializeField] int lifePoints = 5;
     [SerializeField] int dashDamage = 1;
 
+    [Header("Dash Effect")]
     [SerializeField] float dashForce = 7.5f;
-    Player player;
-    Rigidbody2D rb;
     bool dashState = true;
 
+    [Header("Echo Effect")]
     [SerializeField] float timeBetweenSpawns;
     [SerializeField] float startTimeBetweenSpawn;
     [SerializeField] GameObject echo;
+
+    [Header("Shake Effect")]
+    [SerializeField] float shake = 0.05f;
+    Vector2 orginalTransform;
+
+    Player player;
+    Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
         rb = GetComponent<Rigidbody2D>();
+        orginalTransform = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -37,6 +45,7 @@ public class DashEnemy : MonoBehaviour
         }
         else if (distanceFromPlayer > 5f && !dashState)
         {
+            StopCoroutine(PerformAttack());
             dashState = true;
         }
 
@@ -76,9 +85,18 @@ public class DashEnemy : MonoBehaviour
         dashState = false;
     }
 
+    void Shaking()
+    {
+        float posX = Random.Range(-shake, shake);
+        float poxY = Random.Range(-shake, shake);
+        Vector2 shakePos = new Vector2(posX, poxY);
+        transform.localPosition = (Vector2)orginalTransform - shakePos;
+    }
+
     IEnumerator PerformAttack()
     {
         moveSpeed = 0;
+        Shaking();
         yield return new WaitForSeconds(2f);
         Dash();
         moveSpeed = 1f;
