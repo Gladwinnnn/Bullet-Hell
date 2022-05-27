@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShooterEnemy : MonoBehaviour
+public class AOEShooterEnemy : MonoBehaviour
 {
     [Header("Enemy Stats")]
     [SerializeField] float moveSpeed = 1f;
     [SerializeField] int lifePoints = 5;
-    [SerializeField] int shootDamage = 1;
+    [SerializeField] int dashDamage = 1;
 
     [Header("Projectile")]
-    [SerializeField] GameObject enemyBullet;
-    [SerializeField] float projectileSpeed = 10f;
+    [SerializeField] GameObject enemyGrenade;
+    // [SerializeField] float projectileSpeed = 10f;
+    [SerializeField] float throwForce = 0.5f;
     float countDownToFire = 1.5f, speed = 1f;
 
     [Header("Fire Point")]
@@ -24,11 +25,11 @@ public class ShooterEnemy : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
     }
-    
+
     // Update is called once per frame
     void Update()
     {
-        Move();
+        // Move();
         Fire();
 
         if (lifePoints == 0)
@@ -42,17 +43,17 @@ public class ShooterEnemy : MonoBehaviour
         var targetPosition = player.transform.position;
         var movementThisFrame = moveSpeed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
-    
-        Vector2 distance = player.transform.position - transform.position;
-        transform.up = distance;
     }
 
     void Fire()
     {
         if (countDownToFire <= 0)
         {
-            GameObject bullet = Instantiate(enemyBullet, firePoint.transform.position, Quaternion.identity);
-            bullet.GetComponent<Rigidbody2D>().velocity = (player.transform.position - transform.position).normalized * projectileSpeed;
+            GameObject grenade = Instantiate(enemyGrenade, firePoint.transform.position, Quaternion.identity);
+            Rigidbody2D rb = grenade.GetComponent<Rigidbody2D>();
+            Vector2 distance = player.transform.position - transform.position;
+
+            rb.AddForce(distance * throwForce, ForceMode2D.Impulse);
             countDownToFire = 1.5f;
         }
         else

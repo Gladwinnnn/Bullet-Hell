@@ -9,7 +9,7 @@ public class ImmobileShooter : MonoBehaviour
     [SerializeField] int shootDamage = 1;
 
     [Header("Projectile")]
-    [SerializeField] GameObject enemyFire;
+    [SerializeField] GameObject enemyBullet;
     [SerializeField] float projectileSpeed = 10f;
     float countDownToFire = 1.5f, speed = 1f;
 
@@ -47,19 +47,19 @@ public class ImmobileShooter : MonoBehaviour
         if (countDownToFire <= 0)
         {
             // upwards trajectory
-            GameObject fireUp = Instantiate(enemyFire, firePointUp.transform.position, Quaternion.identity);
+            GameObject fireUp = Instantiate(enemyBullet, firePointUp.transform.position, Quaternion.identity);
             fireUp.GetComponent<Rigidbody2D>().velocity = (new Vector2(0,1)).normalized * projectileSpeed;
 
             // downwards trajectory
-            GameObject fireDown = Instantiate(enemyFire, firePointDown.transform.position, Quaternion.identity);
+            GameObject fireDown = Instantiate(enemyBullet, firePointDown.transform.position, Quaternion.identity);
             fireDown.GetComponent<Rigidbody2D>().velocity = (new Vector2(0,-1)).normalized * projectileSpeed;
 
             // right trajectory
-            GameObject fireRight = Instantiate(enemyFire, firePointRight.transform.position, Quaternion.identity);
+            GameObject fireRight = Instantiate(enemyBullet, firePointRight.transform.position, Quaternion.identity);
             fireRight.GetComponent<Rigidbody2D>().velocity = (new Vector2(1,0)).normalized * projectileSpeed;
 
             // left trajectory
-            GameObject fireLeft = Instantiate(enemyFire, firePointLeft.transform.position, Quaternion.identity);
+            GameObject fireLeft = Instantiate(enemyBullet, firePointLeft.transform.position, Quaternion.identity);
             fireLeft.GetComponent<Rigidbody2D>().velocity = (new Vector2(-1,0)).normalized * projectileSpeed;
 
             countDownToFire = 1.5f;

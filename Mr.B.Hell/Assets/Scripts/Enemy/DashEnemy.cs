@@ -9,9 +9,10 @@ public class DashEnemy : MonoBehaviour
     [SerializeField] int lifePoints = 5;
     [SerializeField] int dashDamage = 1;
 
-    [SerializeField] float dashForce = 15f;
+    [SerializeField] float dashForce = 7.5f;
     Player player;
     Rigidbody2D rb;
+    bool dashState = true;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,17 @@ public class DashEnemy : MonoBehaviour
     void Update()
     {
         Move();
-        Dash();
+        // Dash();
+        // StartCoroutine(PerformAttack());
+        float distanceFromPlayer = Vector2.Distance(transform.position, player.transform.position);
+        if (Mathf.Abs(distanceFromPlayer) <= 5f && dashState)
+        {
+            StartCoroutine(PerformAttack());
+        }
+        else if (distanceFromPlayer > 5f && !dashState)
+        {
+            dashState = true;
+        }
 
         if (lifePoints == 0)
         {
@@ -37,23 +48,25 @@ public class DashEnemy : MonoBehaviour
         var targetPosition = player.transform.position;
         var movementThisFrame = moveSpeed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
+
+        Vector2 distance = player.transform.position - transform.position;
+        transform.up = distance;
     }
 
     void Dash()
     {
-        float distanceFromPlayer = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 distance = player.transform.position - transform.position;
+        distance.Normalize();
+        rb.AddForce(distance * dashForce, ForceMode2D.Impulse);
+        dashState = false;
+    }
 
-        if (Mathf.Abs(distanceFromPlayer) <= 5f)
-        {
-            //delete all the print pls i lazy :)
-            print(distanceFromPlayer);
-            Vector2 distance = player.transform.position - transform.position;
-            print(distance);
-            distance.Normalize();
-            print(distance);
-
-            rb.AddForce(distance * dashForce, ForceMode2D.Impulse);
-        }
+    IEnumerator PerformAttack()
+    {
+        moveSpeed = 0;
+        yield return new WaitForSeconds(2f);
+        Dash();
+        moveSpeed = 1f;
     }
 
     void Die() 
