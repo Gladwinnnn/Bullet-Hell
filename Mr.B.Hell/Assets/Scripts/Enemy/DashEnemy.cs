@@ -14,6 +14,10 @@ public class DashEnemy : MonoBehaviour
     Rigidbody2D rb;
     bool dashState = true;
 
+    [SerializeField] float timeBetweenSpawns;
+    [SerializeField] float startTimeBetweenSpawn;
+    [SerializeField] GameObject echo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +61,18 @@ public class DashEnemy : MonoBehaviour
         Vector2 distance = player.transform.position - transform.position;
         distance.Normalize();
         rb.AddForce(distance * dashForce, ForceMode2D.Impulse);
+
+        if (timeBetweenSpawns <= 0)
+        {
+            GameObject obj = Instantiate(echo, transform.position, Quaternion.identity);
+            Destroy(obj, 0.5f);
+            timeBetweenSpawns = startTimeBetweenSpawn;
+        }
+        else
+        {
+            timeBetweenSpawns -= Time.deltaTime;
+        }
+
         dashState = false;
     }
 

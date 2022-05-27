@@ -3407,8 +3407,16 @@ PrefabInstance:
       value: DashEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 8254070771034321918, guid: 86279883ac645074cbc101f0684068ab, type: 3}
+      propertyPath: echo
+      value: 
+      objectReference: {fileID: 8254070771034321917, guid: fff78b3b545911b459a2e9f897012254, type: 3}
+    - target: {fileID: 8254070771034321918, guid: 86279883ac645074cbc101f0684068ab, type: 3}
       propertyPath: dashForce
       value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254070771034321918, guid: 86279883ac645074cbc101f0684068ab, type: 3}
+      propertyPath: startTimeBetweenSpawn
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8254070771034321919, guid: 86279883ac645074cbc101f0684068ab, type: 3}
       propertyPath: m_Constraints
