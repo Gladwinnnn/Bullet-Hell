@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement
 {
-
+    private Player player;
     private PlayerData playerData;
     private Rigidbody2D RB;
     private Transform playerTransform;
 
-    public PlayerMovement(PlayerData data, Rigidbody2D RB, Transform transform)
+    public PlayerMovement(Player player, PlayerData data, Rigidbody2D RB, Transform transform)
     {
+        this.player = player;
         this.playerData = data;
         this.RB = RB;
         this.playerTransform = transform;
@@ -18,6 +19,8 @@ public class PlayerMovement
 
     public void Move(float xInput, float yInput, float moveForce)
     {
+        if (player.IsHit) return;
+
         Vector2 movement = new Vector2(xInput, yInput);
 
         RB.MovePosition(RB.position + movement * moveForce * Time.fixedDeltaTime);

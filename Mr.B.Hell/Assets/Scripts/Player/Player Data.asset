@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6341a7686c767e44195e772007dfd236, type: 3}
   m_Name: Player Data
   m_EditorClassIdentifier: 
+  health: 5
+  knockbackForce: 30
+  knockbackTime: 0.15
+  immunityTime: 0.3
   moveForce: 10
   chargeCoolDown: 3
   shake: 0.05

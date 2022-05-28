@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankEnemy : MonoBehaviour
+public class TankEnemy : Enemy
 {
     [Header("Enemy Stats")]
     [SerializeField] float moveSpeed = 0.25f;
-    [SerializeField] int lifePoints = 20;
     [SerializeField] int meleeDamage = 1;
 
     [Header("Rotation")]
@@ -14,24 +13,24 @@ public class TankEnemy : MonoBehaviour
     [SerializeField] float rotateSpeed = 1f;
     float count = 1;
 
-    Player player;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        player = FindObjectOfType<Player>();
+        base.Start();
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
+        if (isDead)
+        {
+            transform.GetChild(1).gameObject.SetActive(false);
+            return;
+        }
         Move();
         Rotate();
-
-        if (lifePoints == 0)
-        {
-            Die();
-        }
     }
 
     void Move()
@@ -50,8 +49,4 @@ public class TankEnemy : MonoBehaviour
         }
     }
 
-    void Die() 
-    {
-        Destroy(gameObject);
-    }
 }

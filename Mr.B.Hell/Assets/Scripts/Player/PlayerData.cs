@@ -5,6 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player/Player Data")]
 public class PlayerData : ScriptableObject
 {
+    [Header("Health")]
+    public int health;
+    public float knockbackForce;
+    public float knockbackTime;
+    public float immunityTime;
+
     [Header("Movement")]
     public float moveForce;
 

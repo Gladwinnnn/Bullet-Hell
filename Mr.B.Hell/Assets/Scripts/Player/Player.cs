@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public PlayerDashState DashState { get; private set; }
     public PlayerShootState ShootState { get; private set; }
     public PlayerGrenadeState GrenadeState { get; private set; }
-
+    public PlayerDeathState DeathState { get; private set; }
 
     [SerializeField]
     private PlayerData playerData;
@@ -25,8 +25,14 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Transform firePoint;
 
+    public bool IsHit { get; private set; }
+    public bool IsImmune { get; private set; }
     public bool CanShoot { get; private set; }
     public bool CanGrenade { get; private set; }
+
+    private float lastImmuneTime;
+    private float lastHitTime;
+
 
     #endregion
 
@@ -36,6 +42,9 @@ public class Player : MonoBehaviour
     public Animator Anim { get; private set; }
     public Rigidbody2D RB { get; private set; }
     public PlayerMovement Movement { get; private set; }
+    public PlayerHealth Health { get; private set; }
+
+    public CameraShake CameraShake { get; private set; }
 
     #endregion
 
@@ -48,6 +57,7 @@ public class Player : MonoBehaviour
         DashState = new PlayerDashState(this, StateMachine, playerData, "dash");
         ShootState = new PlayerShootState(this, StateMachine, playerData, "shoot");
         GrenadeState = new PlayerGrenadeState(this, StateMachine, playerData, "grenade");
+        DeathState = new PlayerDeathState(this, StateMachine, playerData, "death");
 
     }
 
@@ -58,17 +68,23 @@ public class Player : MonoBehaviour
         Anim = GetComponent<Animator>();
         RB = GetComponent<Rigidbody2D>();
 
-        Movement = new PlayerMovement(playerData, RB, transform);
+        Movement = new PlayerMovement(this, playerData, RB, transform);
+        Health = new PlayerHealth(playerData);
+        CameraShake = FindObjectOfType<CameraShake>();
 
         StateMachine.Initialize(MoveState);
 
         CanShoot = true;
         CanGrenade = true;
+
+        lastHitTime = playerData.knockbackTime;
+        lastImmuneTime = playerData.immunityTime;
     }
 
     private void Update()
     {
         StateMachine.CurrentState.LogicUpdate();
+        Timer();
     }
 
     private void FixedUpdate()
@@ -86,4 +102,54 @@ public class Player : MonoBehaviour
     }
 
     public Transform GetFirePoint() => firePoint;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (StateMachine.CurrentState == DashState || IsImmune) return;
+
+        IsHit = true;
+        IsImmune = true;
+
+        bool flag = Health.MinusHeath(1);
+        if (flag)
+        {
+            //call level script
+            StateMachine.ChangeState(DeathState);
+        }
+
+        Vector2 difference = collision.transform.position - transform.position;
+        difference = difference.normalized * playerData.knockbackForce;
+        //difference = difference * playerData.knockbackForce;
+        RB.AddForce(-difference, ForceMode2D.Impulse);
+        if (collision.gameObject.layer == 8)
+            Destroy(collision.gameObject);
+    }
+
+    private void Timer()
+    {
+        if (IsImmune)
+        {
+            lastImmuneTime -= Time.deltaTime;
+
+            if (lastImmuneTime < 0)
+            {
+                IsImmune = false;
+                lastImmuneTime = playerData.immunityTime;
+            }
+        }
+
+        if (IsHit)
+        {
+            lastHitTime -= Time.deltaTime;
+            if (lastHitTime < 0)
+            {
+                IsHit = false;
+                lastHitTime = playerData.knockbackTime;
+                RB.velocity = Vector2.zero;
+            }
+        }
+    }
+
+
+
 }

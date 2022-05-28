@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShooterEnemy : MonoBehaviour
+public class ShooterEnemy : Enemy
 {
     [Header("Enemy Stats")]
     [SerializeField] float moveSpeed = 1f;
-    [SerializeField] int lifePoints = 5;
     [SerializeField] int shootDamage = 1;
 
     [Header("Projectile")]
@@ -17,24 +16,20 @@ public class ShooterEnemy : MonoBehaviour
     [Header("Fire Point")]
     [SerializeField] private Transform firePoint;
 
-    Player player;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        player = FindObjectOfType<Player>();
+        base.Start();
     }
-    
+
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
+        if (isDead) return;
         Move();
         Fire();
-
-        if (lifePoints == 0)
-        {
-            Die();
-        }
     }
 
     void Move()
@@ -59,10 +54,5 @@ public class ShooterEnemy : MonoBehaviour
         {
             countDownToFire -= Time.deltaTime * speed;
         }
-    }
-
-    void Die() 
-    {
-        Destroy(gameObject);
     }
 }
