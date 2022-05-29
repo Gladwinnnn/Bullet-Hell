@@ -132,11 +132,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 631618174597787887, guid: 580a1d4d811a80a4a865b676c7445a7b, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.8509804
       objectReference: {fileID: 0}
     - target: {fileID: 631618174597787887, guid: 580a1d4d811a80a4a865b676c7445a7b, type: 3}
       propertyPath: m_Color.g
-      value: 0.92376757
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 631618174597787887, guid: 580a1d4d811a80a4a865b676c7445a7b, type: 3}
       propertyPath: m_Color.r
@@ -3700,7 +3700,7 @@ GameObject:
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1066734250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4158,3 +4158,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 458a67bfc888c3945b9e946d32245003, type: 3}
+--- !u!1001 &196664412684466466
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 655648651828736245, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+      propertyPath: m_Name
+      value: Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058378558598296423, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058378558598296423, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.051
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058378558598296423, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058378558598296423, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058378558598296423, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058378558598296423, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058378558598296423, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058378558598296423, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058378558598296423, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058378558598296423, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1058378558598296423, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+--- !u!1 &196664412684466467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 655648651828736245, guid: 5614cb7516a6a5b489ec0b1f3c924c43, type: 3}
+  m_PrefabInstance: {fileID: 196664412684466466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &196664412684466468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196664412684466467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f6439bbcc47c264299eda056c219219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 1

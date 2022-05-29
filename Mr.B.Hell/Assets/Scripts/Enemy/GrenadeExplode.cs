@@ -7,10 +7,14 @@ public class GrenadeExplode : MonoBehaviour
 {
     Animator anim;
     SpriteRenderer sRenderer;
+    Rigidbody2D rb;
+
     [SerializeField] float countdown;
     [SerializeField] float explodeTime;
     [SerializeField] float grenadeCountTime;
     [SerializeField] Color[] color;
+    [SerializeField] int layerToChange; 
+
     float currentTime;
     bool flag = true;
     bool colorFlag = true;
@@ -20,6 +24,8 @@ public class GrenadeExplode : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         sRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+
         Invoke("Explode", countdown);
         Invoke("Done", countdown + explodeTime);
         currentTime = grenadeCountTime;
@@ -33,7 +39,7 @@ public class GrenadeExplode : MonoBehaviour
         if (!flag) return;
         if (grenadeCountTime <= 0)
         {
-            print(color[Convert.ToInt32(colorFlag)]);
+            //print(color[Convert.ToInt32(colorFlag)]);
             sRenderer.color = color[Convert.ToInt32(colorFlag)];
             colorFlag = !colorFlag;
             //sRenderer.enabled = !sRenderer.enabled;
@@ -52,7 +58,8 @@ public class GrenadeExplode : MonoBehaviour
     {
         sRenderer.color = color[0];
         anim.SetTrigger("explode");
-        gameObject.layer = 11; // point to grenade explode
+        gameObject.layer = layerToChange; // point to grenade explode
+        if (rb) rb.velocity = Vector2.zero;
     }
 
     void Done()
