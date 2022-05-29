@@ -39,7 +39,7 @@ public class PlayerShootState : PlayerAbilityState
         {
             lastShootTime = Time.time;
             player.Shoot(playerData.bulletPrefab, playerData.shootForce);
-            player.CameraShake.ShakeCamera(2f, 0.3f);
+            player.CameraShake.ShakeCamera(1f, 0.3f);
         }
 
         if (player.CanGrenade && specialAttackInput && player.GrenadeState.canFire())

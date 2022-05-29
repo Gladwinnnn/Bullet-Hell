@@ -47,7 +47,7 @@ public class PlayerState
         secondaryAttackInput = player.InputHandler.SecondaryAttackInput;
         specialAttackInput = player.InputHandler.SpecialAttackInput;
 
-        mousePos = player.InputHandler.RawMouseInput;
+        mousePos = player.InputHandler.EditedMouseInput;
 
         player.Movement.Look(mousePos - (Vector2) player.transform.position);
     }

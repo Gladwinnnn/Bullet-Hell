@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    private PlayerInput playerInput;
+    public PlayerInput playerInput { get; private set; }
     private Camera cam;
     private CursorManager cursorManager;
 
@@ -16,6 +16,8 @@ public class PlayerInputHandler : MonoBehaviour
     public bool PrimaryAttackInput { get; private set; }
     public bool SecondaryAttackInput { get; private set; }
     public bool SpecialAttackInput { get; private set; }
+
+    public Vector2 EditedMouseInput { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,15 @@ public class PlayerInputHandler : MonoBehaviour
         //Debug.Log(Screen.height);
         //RawMouseInput = new Vector2(Mathf.Clamp(RawMouseInput.x, -Screen.width, Screen.width), Mathf.Clamp(RawMouseInput.y, -Screen.height, Screen.height));
 
-        cursorManager.SetCursorPos(RawMouseInput);
+
+        if (playerInput.currentControlScheme == "Keyboard&Mouse")
+        {
+            EditedMouseInput = cam.ScreenToWorldPoint(RawMouseInput);
+        }
+
+        // make else for the controller 
+
+        cursorManager.SetCursorPos(EditedMouseInput);
 
     }
 
@@ -91,10 +101,10 @@ public class PlayerInputHandler : MonoBehaviour
 
         //cursorManager.SetCursorPos(cam.ScreenToWorldPoint(RawMouseInput));
 
-        if (playerInput.currentControlScheme == "Keyboard&Mouse")
-        {
-            RawMouseInput = cam.ScreenToWorldPoint(RawMouseInput);
-        }
+        //if (playerInput.currentControlScheme == "Keyboard&Mouse")
+        //{
+        //    RawMouseInput = cam.ScreenToWorldPoint(RawMouseInput);
+        //}
 
         //print("mevi" + RawMouseInput);
         //Vector3 mousePosition = Input.mousePosition;
