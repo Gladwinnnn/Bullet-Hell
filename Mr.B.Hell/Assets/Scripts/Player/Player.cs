@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private Transform firePoint;
+    [SerializeField]
+    private GameObject hitParticle;
 
     public bool IsHit { get; private set; }
     public bool IsImmune { get; private set; }
@@ -113,10 +115,15 @@ public class Player : MonoBehaviour
         IsImmune = true;
 
         bool flag = Health.MinusHeath(1);
+
+        var particle = Instantiate(hitParticle, transform.position, Quaternion.identity);
+        Destroy(particle, 2f);
+
         if (flag)
         {
             //call level script
             StateMachine.ChangeState(DeathState);
+            return;
         }
 
         Vector2 difference = collision.transform.position - transform.position;

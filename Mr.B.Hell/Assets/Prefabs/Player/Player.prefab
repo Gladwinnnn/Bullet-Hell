@@ -315,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 9bd182b81adbc3942ba6b15e035582e6, type: 2}
   firePoint: {fileID: 631618175075214035}
+  hitParticle: {fileID: 5501154348524992892, guid: 275d7f4ceacdd8d4185926b769ef9e7e, type: 3}
 --- !u!50 &631618174613865714
 Rigidbody2D:
   serializedVersion: 4
