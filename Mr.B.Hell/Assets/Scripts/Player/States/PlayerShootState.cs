@@ -19,6 +19,7 @@ public class PlayerShootState : PlayerAbilityState
         base.Enter();
         player.Shoot(playerData.bulletPrefab, playerData.shootForce);
         lastShootTime = startTime;
+        ShakeCam();
     }
 
     public override void Exit()
@@ -39,7 +40,7 @@ public class PlayerShootState : PlayerAbilityState
         {
             lastShootTime = Time.time;
             player.Shoot(playerData.bulletPrefab, playerData.shootForce);
-            player.CameraShake.ShakeCamera(1f, 0.3f);
+            ShakeCam();
         }
 
         if (player.CanGrenade && specialAttackInput && player.GrenadeState.canFire())
@@ -57,4 +58,8 @@ public class PlayerShootState : PlayerAbilityState
 
     public bool canFire() => Time.time >= lastShootTime + playerData.shootCoolDown;
 
+    private void ShakeCam()
+    {
+        player.CameraShake.ShakeCamera(playerData.shakeAmount, 0.1f);
+    }
 }

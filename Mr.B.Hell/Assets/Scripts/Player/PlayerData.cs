@@ -29,6 +29,7 @@ public class PlayerData : ScriptableObject
     public float shootForce;
     public float moveForceRestriction;
     public GameObject bulletPrefab;
+    public float shakeAmount;
 
     [Header("Grenade")]
     public float grenadeCoolDown;
