@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player/Player Data")]
 public class PlayerData : ScriptableObject
 {
+    [Header("Play Area")]
+    public Vector2 playArea;
+
     [Header("Health")]
     public int health;
     public float knockbackForce;
@@ -27,7 +30,6 @@ public class PlayerData : ScriptableObject
     [Header("Echo Effect")]
     public float echoTime;
     public GameObject echo;
-
 
     [Header("Shooter")]
     public float shootCoolDown;

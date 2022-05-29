@@ -44,4 +44,13 @@ public class PlayerMovement
     {
         RB.velocity = Vector2.zero;
     }
+
+    public void PlayAreaClamping()
+    {
+        Vector2 playerTransform = player.transform.position;
+        Vector2 pos = new Vector2(playerTransform.x, playerTransform.y);
+        pos.x = Mathf.Clamp(playerTransform.x, -playerData.playArea.x, playerData.playArea.x);
+        pos.y = Mathf.Clamp(playerTransform.y, -playerData.playArea.y, playerData.playArea.y);
+        player.transform.position = pos;
+    }
 }

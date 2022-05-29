@@ -41,6 +41,8 @@ public class PlayerState
     public virtual void LogicUpdate()
     {
         //Clamp here
+        player.Movement.PlayAreaClamping();
+
         xInput = player.InputHandler.NormInputX;
         yInput = player.InputHandler.NormInputY;
         primaryAttackInput = player.InputHandler.PrimaryAttackInput;
