@@ -29,10 +29,10 @@ public class Player : MonoBehaviour
     public bool IsImmune { get; private set; }
     public bool CanShoot { get; private set; }
     public bool CanGrenade { get; private set; }
+    public int Damage { get; set; } // for dash attack only - for now 
 
     private float lastImmuneTime;
     private float lastHitTime;
-
 
     #endregion
 
@@ -52,12 +52,12 @@ public class Player : MonoBehaviour
     {
         StateMachine = new PlayerStateMachine();
 
-        MoveState = new PlayerMoveState(this, StateMachine, playerData, "move");
+        MoveState = new PlayerMoveState(this, StateMachine, playerData, "idle");
         ChargeState = new PlayerChargeState(this, StateMachine, playerData, "charge");
         DashState = new PlayerDashState(this, StateMachine, playerData, "dash");
-        ShootState = new PlayerShootState(this, StateMachine, playerData, "shoot");
-        GrenadeState = new PlayerGrenadeState(this, StateMachine, playerData, "grenade");
-        DeathState = new PlayerDeathState(this, StateMachine, playerData, "death");
+        ShootState = new PlayerShootState(this, StateMachine, playerData, "idle");
+        GrenadeState = new PlayerGrenadeState(this, StateMachine, playerData, "idle");
+        DeathState = new PlayerDeathState(this, StateMachine, playerData, "idle");
 
     }
 
@@ -105,7 +105,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (StateMachine.CurrentState == DashState || IsImmune) return;
+        if (IsImmune) return;
+
+        if (StateMachine.CurrentState == DashState) Dash(collision);
 
         IsHit = true;
         IsImmune = true;
@@ -123,6 +125,19 @@ public class Player : MonoBehaviour
         RB.AddForce(-difference, ForceMode2D.Impulse);
         if (collision.gameObject.layer == 8)
             Destroy(collision.gameObject);
+    }
+
+    private void Dash(Collider2D collision)
+    {
+        Enemy enemy = collision.GetComponent<Enemy>();
+        if (enemy)
+        {
+            enemy.MinusLife(Damage);
+
+            //Vector2 difference = collision.transform.position - transform.position;
+            //difference = difference.normalized * playerData.knockbackForce;
+            //collision.GetComponent<Rigidbody2D>().AddForce(-difference, ForceMode2D.Impulse);
+        }
     }
 
     private void Timer()
@@ -150,6 +165,11 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    //fml what is this function
+    public void SpawnAndDestroy(GameObject obj, Transform locatiom, Quaternion rotation)
+    {
+        GameObject temp = Instantiate(obj, locatiom.position, rotation);
+        Destroy(temp, 2f);
+    }
 
 }

@@ -24,6 +24,11 @@ public class PlayerData : ScriptableObject
     public float dashForce;
     public float dashTime;
 
+    [Header("Echo Effect")]
+    public float echoTime;
+    public GameObject echo;
+
+
     [Header("Shooter")]
     public float shootCoolDown;
     public float shootForce;

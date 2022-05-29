@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerChargeState : PlayerAbilityState
 {
     Vector2 orginalTransform;
-    float multiplyer;
+    int multiplyer;
     float lastChargedTime;
 
     public PlayerChargeState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
@@ -22,7 +22,7 @@ public class PlayerChargeState : PlayerAbilityState
     {
         base.Enter();
         lastChargedTime = startTime;
-        multiplyer = 1;
+        multiplyer = 0;
     }
 
     public override void Exit()
@@ -30,7 +30,8 @@ public class PlayerChargeState : PlayerAbilityState
         base.Exit();
         player.transform.GetChild(0).localPosition = orginalTransform;
         lastChargedTime = Time.time;
-
+        Debug.Log(multiplyer);
+        player.Damage = multiplyer;
     }
 
     public override void LogicUpdate()

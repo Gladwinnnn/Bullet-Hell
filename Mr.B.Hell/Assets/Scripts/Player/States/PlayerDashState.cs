@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerDashState : PlayerAbilityState
 {
+    float lastEchoTime; 
     public PlayerDashState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -16,9 +17,8 @@ public class PlayerDashState : PlayerAbilityState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log(player.ChargeState.GetMultiplyer());
-
         player.Movement.Dash(player.GetFirePoint(), playerData.dashForce);
+        lastEchoTime = startTime;
     }
 
     public override void Exit()
@@ -34,6 +34,12 @@ public class PlayerDashState : PlayerAbilityState
         if (Time.time >= startTime + playerData.dashTime)
         {
             stateMachine.ChangeState(player.MoveState);
+        }
+
+        if(Time.time >= lastEchoTime + playerData.echoTime)
+        {
+            player.SpawnAndDestroy(playerData.echo, player.transform, player.transform.rotation);
+            lastEchoTime = Time.time;
         }
     }
 
