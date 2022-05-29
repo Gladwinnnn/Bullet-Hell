@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0239a3250970edb45acf649e8f1912b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdown: 5
+  countdown: 3
   explodeTime: 3
   grenadeCountTime: 0.7
   color:
@@ -181,6 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  particlesPrefab: {fileID: 0}
 --- !u!114 &196664412684466468
 MonoBehaviour:
   m_ObjectHideFlags: 0

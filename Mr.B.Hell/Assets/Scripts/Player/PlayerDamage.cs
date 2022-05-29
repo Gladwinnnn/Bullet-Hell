@@ -17,6 +17,11 @@ public class PlayerDamage : MonoBehaviour
         }
 
         Vector2 distance = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y);
+        if (!particlesPrefab)
+        {
+            return;
+        }
+
         var particle = Instantiate(particlesPrefab, transform.position, Quaternion.identity);
         particle.transform.up = distance;
 
