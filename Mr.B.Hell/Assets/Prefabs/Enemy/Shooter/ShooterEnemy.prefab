@@ -234,8 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifePoints: 5
   moveSpeed: 1
-  shootDamage: 1
-  enemyBullet: {fileID: 0}
+  enemyBullet: {fileID: 9204125825692527862, guid: 51689af77886ce3408797836e7402544, type: 3}
   projectileSpeed: 5
   firePoint: {fileID: 6036864819283491259}
 --- !u!58 &591818612
