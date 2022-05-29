@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
             Dead();
         }
 
-        print("hihiih");
+        //print("hihiih");
     }
 
     private void Dead()

@@ -30,8 +30,9 @@ public class PlayerChargeState : PlayerAbilityState
         base.Exit();
         player.transform.GetChild(0).localPosition = orginalTransform;
         lastChargedTime = Time.time;
+        player.Damage = multiplyer == 0 ? multiplyer++ : multiplyer;
         Debug.Log(multiplyer);
-        player.Damage = multiplyer;
+
     }
 
     public override void LogicUpdate()

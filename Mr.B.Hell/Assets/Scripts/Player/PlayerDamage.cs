@@ -11,22 +11,21 @@ public class PlayerDamage : MonoBehaviour
     {
 
         Enemy enemy = collision.GetComponent<Enemy>();
-        if(enemy)
+        if (enemy)
         {
             enemy.MinusLife(damage);
         }
 
-        Vector2 distance = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y);
-        if (!particlesPrefab)
+        if (particlesPrefab)
         {
-            return;
+            Vector2 distance = new Vector2(transform.position.x - collision.transform.position.x, transform.position.y - collision.transform.position.y);
+            var particle = Instantiate(particlesPrefab, transform.position, Quaternion.identity);
+            particle.transform.up = distance;
+            Destroy(particle, 2f);
         }
 
-        var particle = Instantiate(particlesPrefab, transform.position, Quaternion.identity);
-        particle.transform.up = distance;
+        if (gameObject.layer == 13 || collision.gameObject.layer == 9) return;
 
-        Destroy(particle, 2f);
-
-        Destroy(gameObject);
+            Destroy(gameObject);
     }
 }

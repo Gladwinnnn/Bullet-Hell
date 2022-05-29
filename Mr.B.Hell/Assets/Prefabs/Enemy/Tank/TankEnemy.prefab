@@ -234,7 +234,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifePoints: 10
   moveSpeed: 0.3
-  meleeDamage: 1
   rotate: 1
   rotateSpeed: 0.3
 --- !u!58 &983772476
@@ -383,3 +382,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a75b18a89d2f9c64f91b07e79f271c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockBackForce: 10
+  color: {r: 1, g: 0.11764706, b: 0.03137255, a: 1}
