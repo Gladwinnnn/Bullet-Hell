@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Tank
-  m_Shader: {fileID: -6465566751694194690, guid: 75d96e18eb3b4a146a78eb7bd9c51c92, type: 3}
+  m_Name: AOE Shooter
+  m_Shader: {fileID: -6465566751694194690, guid: 7662b33915d9c1049a858673ba669fc8, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -21,11 +21,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 1bf192de39ea5164e8040a79958f082b, type: 3}
+        m_Texture: {fileID: 2800000, guid: f49ea4911faa56e43aa7f4dad9882a72, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: bb2b3a169a6037743b22817083c92885, type: 3}
+        m_Texture: {fileID: 2800000, guid: abb4b404dc5e49847a47737bfc30cd2e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -45,5 +45,5 @@ Material:
     - _Fade: 1
     - _Scale: 75.33
     m_Colors:
-    - _Color: {r: 3.6439795, g: 3.6439795, b: 3.6439795, a: 0}
+    - _Color: {r: 6.498019, g: 6.498019, b: 6.498019, a: 0}
   m_BuildTextureStacks: []

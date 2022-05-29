@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class ShooterEnemy : Enemy
 {
-    [Header("Enemy Stats")]
-    [SerializeField] float moveSpeed = 1f;
-    [SerializeField] int shootDamage = 1;
-
     [Header("Projectile")]
     [SerializeField] GameObject enemyBullet;
     [SerializeField] float projectileSpeed = 10f;
@@ -29,17 +25,8 @@ public class ShooterEnemy : Enemy
         base.Update();
         if (isDead) return;
         Move();
+        Rotate();
         Fire();
-    }
-
-    void Move()
-    {
-        var targetPosition = player.transform.position;
-        var movementThisFrame = moveSpeed * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
-    
-        Vector2 distance = player.transform.position - transform.position;
-        transform.up = distance;
     }
 
     void Fire()

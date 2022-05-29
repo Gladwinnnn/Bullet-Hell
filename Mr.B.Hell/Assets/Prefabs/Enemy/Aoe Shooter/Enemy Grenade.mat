@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Tank
-  m_Shader: {fileID: -6465566751694194690, guid: 75d96e18eb3b4a146a78eb7bd9c51c92, type: 3}
+  m_Name: Enemy Grenade
+  m_Shader: {fileID: -6465566751694194690, guid: 77b377ba1208eef4cb43fe92a664c04f, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -21,11 +21,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 1bf192de39ea5164e8040a79958f082b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 13cee37b834598e47b2dbeaf2737f3b1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: bb2b3a169a6037743b22817083c92885, type: 3}
+        m_Texture: {fileID: 2800000, guid: c6192dcfd806a7944b7626b27ae25507, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class TankEnemy : Enemy
 {
-    [Header("Enemy Stats")]
-    [SerializeField] float moveSpeed = 0.25f;
-    [SerializeField] int meleeDamage = 1;
-
     [Header("Rotation")]
     [SerializeField] bool rotate = true;
     [SerializeField] float rotateSpeed = 1f;
@@ -30,17 +26,10 @@ public class TankEnemy : Enemy
             return;
         }
         Move();
-        Rotate();
+        CRotate();
     }
 
-    void Move()
-    {
-        var targetPosition = player.transform.position;
-        var movementThisFrame = moveSpeed * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
-    }
-
-    void Rotate()
+    void CRotate()
     {
         if(rotate)
         {

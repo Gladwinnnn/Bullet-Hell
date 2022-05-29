@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     float minScale = 10f, maxScale = 70f;
 
     [SerializeField] int lifePoints = 3;
+    [SerializeField] float moveSpeed = 1f;
 
     // Start is called before the first frame update
 
@@ -74,5 +75,19 @@ public class Enemy : MonoBehaviour
 
         //set glow inactive
         transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public void Move()
+    {
+        rb.velocity = Vector2.zero;
+        var targetPosition = player.transform.position;
+        var movementThisFrame = moveSpeed * Time.deltaTime;
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
+    }
+
+    public void Rotate()
+    {
+        Vector2 distance = player.transform.position - transform.position;
+        transform.up = distance;
     }
 }

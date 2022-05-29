@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ImmobileShooter : Enemy
 {
-    [Header("Enemy Stats")]
-    [SerializeField] int shootDamage = 1;
 
     [Header("Projectile")]
     [SerializeField] GameObject enemyBullet;
@@ -37,7 +35,7 @@ public class ImmobileShooter : Enemy
         base.Update();
         if (isDead) return;
         Fire();
-        Rotate();
+        CRotate();
     }
 
     void Fire()
@@ -72,7 +70,7 @@ public class ImmobileShooter : Enemy
         }
     }
 
-    void Rotate()
+    void CRotate()
     {
         if (rotate)
         {
