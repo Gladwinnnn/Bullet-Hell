@@ -14,12 +14,18 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float xCoordinatesMin = -8.3f;
     [SerializeField] float xCoordinatesMax = 8.3f;
 
+    int numberOfEnemies;
+
     IEnumerator Start()
     {
         while(spawn)
         {
             yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
-            SpawnEnemies();
+            if (numberOfEnemies <= 20)
+            {
+                SpawnEnemies();
+                numberOfEnemies++;
+            }
         }
     }
 

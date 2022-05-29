@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 396718324}
   m_Layer: 6
   m_Name: ImmobileEnemyShooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifePoints: 5
-  shootDamage: 1
+  moveSpeed: 1
   enemyBullet: {fileID: 9204125825692527862, guid: 51689af77886ce3408797836e7402544, type: 3}
   projectileSpeed: 10
   countDown: 1

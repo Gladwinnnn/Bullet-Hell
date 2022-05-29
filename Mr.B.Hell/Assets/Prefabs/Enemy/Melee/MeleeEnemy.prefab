@@ -211,8 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifePoints: 5
-  moveSpeed: 5
-  meleeDamage: 1
+  moveSpeed: 3
 --- !u!50 &1313713817292996082
 Rigidbody2D:
   serializedVersion: 4
