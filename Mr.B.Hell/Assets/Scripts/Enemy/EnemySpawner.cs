@@ -15,13 +15,14 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int maxNumberOfEnemies = 20;
 
     float delayForEnemyToSpawn = 2.5f;
-    float countDown = 60f;
-    float secondCountDown = 120f;
-    float finalCountDown = 180f;
+    float countDown = 30f;
+    float secondCountDown = 60f;
+    float finalCountDown = 120f;
 
     bool spawnSecondWave = false;
     bool spawnThirdWave = false;
     bool spawnLastWave = false;
+
     int level;
 
     void Update()
@@ -72,9 +73,9 @@ public class EnemySpawner : MonoBehaviour
             while(spawn)
             {
                 yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
-                if (numberOfEnemies <= maxNumberOfEnemies && !spawnSecondWave) SpawnFirstWave();
+                if (numberOfEnemies <= maxNumberOfEnemies && spawnThirdWave) SpawnEnemies();
                 else if (numberOfEnemies <= maxNumberOfEnemies && spawnSecondWave) SpawnSecondWave();
-                else if (numberOfEnemies <= maxNumberOfEnemies && spawnThirdWave) SpawnEnemies();
+                else if (numberOfEnemies <= maxNumberOfEnemies && !spawnSecondWave) SpawnFirstWave();
             }
         }
         else if (level == 3)
@@ -82,10 +83,10 @@ public class EnemySpawner : MonoBehaviour
             while(spawn)
             {
                 yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
-                if (numberOfEnemies <= maxNumberOfEnemies && !spawnSecondWave) SpawnFirstWave();
-                else if (numberOfEnemies <= maxNumberOfEnemies && spawnSecondWave) SpawnSecondWave();
+                if (numberOfEnemies <= maxNumberOfEnemies && spawnLastWave) SpawnEnemies();
                 else if (numberOfEnemies <= maxNumberOfEnemies && spawnThirdWave) SpawnThirdWave();
-                else if (numberOfEnemies <= maxNumberOfEnemies && spawnLastWave) SpawnEnemies();
+                else if (numberOfEnemies <= maxNumberOfEnemies && spawnSecondWave) SpawnSecondWave();
+                else if (numberOfEnemies <= maxNumberOfEnemies && !spawnSecondWave) SpawnFirstWave();
             }
         }
     }
