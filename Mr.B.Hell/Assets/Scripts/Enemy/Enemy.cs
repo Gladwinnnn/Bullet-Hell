@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] int lifePoints = 3;
     [SerializeField] float moveSpeed = 1f;
+    [SerializeField] int scoreValue;
 
     // Start is called before the first frame update
 
@@ -56,6 +57,7 @@ public class Enemy : MonoBehaviour
         if (lifePoints <= 0)
         {
             Dead();
+            FindObjectOfType<GameSession>().AddToScore(scoreValue);
         }
 
         //print("hihiih");

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerDamage
   - Enemy
+  - Shredder
   layers:
   - Default
   - TransparentFX

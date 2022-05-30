@@ -9,7 +9,6 @@ public class TankEnemy : Enemy
     [SerializeField] float rotateSpeed = 1f;
     float count = 1;
 
-
     // Start is called before the first frame update
     public override void Start()
     {

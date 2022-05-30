@@ -33,7 +33,7 @@ public class ImmobileShooter : Enemy
     public override void Update()
     {
         base.Update();
-        if (isDead) return;
+        if (isDead) return;   
         Fire();
         CRotate();
     }

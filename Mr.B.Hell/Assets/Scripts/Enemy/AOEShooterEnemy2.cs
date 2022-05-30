@@ -30,7 +30,7 @@ public class AOEShooterEnemy2 : Enemy
     public override void Update()
     {
         base.Update();
-        if (isDead) return;
+        if (isDead) return;   
 
         Rotate();
         switch (enemyState)

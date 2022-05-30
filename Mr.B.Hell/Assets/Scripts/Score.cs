@@ -8,6 +8,8 @@ public class Score : MonoBehaviour
     private static Score thisInstance;
     [SerializeField] TextMeshProUGUI scoreText;
 
+    GameSession gameSession;
+
     bool playing = true;
     string finishTime = "";
 
@@ -24,9 +26,14 @@ public class Score : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        gameSession = FindObjectOfType<GameSession>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        
+        scoreText.text = gameSession.GetScore().ToString();
     }
 }

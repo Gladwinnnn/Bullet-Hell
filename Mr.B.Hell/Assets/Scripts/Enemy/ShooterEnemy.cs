@@ -12,7 +12,6 @@ public class ShooterEnemy : Enemy
     [Header("Fire Point")]
     [SerializeField] private Transform firePoint;
 
-
     // Start is called before the first frame update
     public override void Start()
     {
@@ -23,7 +22,7 @@ public class ShooterEnemy : Enemy
     public override void Update()
     {
         base.Update();
-        if (isDead) return;
+        if (isDead) return;   
         Move();
         Rotate();
         Fire();
