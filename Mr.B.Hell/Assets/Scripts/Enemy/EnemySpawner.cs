@@ -7,8 +7,8 @@ public class EnemySpawner : MonoBehaviour
 {
     bool spawn = true;
 
-    [SerializeField] float minSpawnDelay = 0.5f;
-    [SerializeField] float maxSpawnDelay = 2f;
+    [SerializeField] float minSpawnDelay = 1f;
+    [SerializeField] float maxSpawnDelay = 3f;
     [SerializeField] GameObject[] enemy;
     [SerializeField] Vector2 playArea;
     [SerializeField] int numberOfEnemies;
@@ -27,13 +27,19 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         numberOfEnemies = FindObjectsOfType<Enemy>().Length;
-        // delayForEnemyToSpawn -= Time.deltaTime;
-        // Debug.Log(delayForEnemyToSpawn);
 
-        if (level == 1 || level == 2)
+        if (level == 1)
         {
             countDown -= Time.deltaTime;
             if (countDown <= 0) spawnSecondWave = true;
+        }
+        else if (level == 2)
+        {
+            countDown -= Time.deltaTime;
+            secondCountDown -= Time.deltaTime;
+
+            if (countDown <= 0) spawnSecondWave = true;
+            if (secondCountDown <= 0) spawnThirdWave = true;
         }
         else if (level == 3)
         {
@@ -67,7 +73,8 @@ public class EnemySpawner : MonoBehaviour
             {
                 yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
                 if (numberOfEnemies <= maxNumberOfEnemies && !spawnSecondWave) SpawnFirstWave();
-                else if (numberOfEnemies <= maxNumberOfEnemies && spawnSecondWave) SpawnEnemies();
+                else if (numberOfEnemies <= maxNumberOfEnemies && spawnSecondWave) SpawnSecondWave();
+                else if (numberOfEnemies <= maxNumberOfEnemies && spawnThirdWave) SpawnEnemies();
             }
         }
         else if (level == 3)

@@ -44,12 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7710c4681b309774496b7a681bf5039c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpawnDelay: 0.75
+  minSpawnDelay: 1
   maxSpawnDelay: 3
   enemy:
   - {fileID: 1313713817292996087, guid: 9d63bff060a42d349a195718a9c29119, type: 3}
-  - {fileID: 3368661762168746692, guid: 458a67bfc888c3945b9e946d32245003, type: 3}
-  - {fileID: 505716380666370056, guid: 1575650da764b7f4489c35b469eb6a23, type: 3}
-  - {fileID: 5835716858130903923, guid: 1edecbf3c7c445e4faa79f64938da0f3, type: 3}
-  - {fileID: 6987518552705486192, guid: e5843796b8c11e443b1643525c59c5aa, type: 3}
   playArea: {x: 20, y: 20}
+  numberOfEnemies: 0
+  maxNumberOfEnemies: 20

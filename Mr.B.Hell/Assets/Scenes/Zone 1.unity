@@ -33608,17 +33608,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4049986525826381256, guid: 62f73b62aac56ca4aa4dd9126dbfc8dc, type: 3}
-      propertyPath: enemy.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4049986525826381259, guid: 62f73b62aac56ca4aa4dd9126dbfc8dc, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 4049986525826381259, guid: 62f73b62aac56ca4aa4dd9126dbfc8dc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4049986525826381262, guid: 62f73b62aac56ca4aa4dd9126dbfc8dc, type: 3}
       propertyPath: m_RootOrder
