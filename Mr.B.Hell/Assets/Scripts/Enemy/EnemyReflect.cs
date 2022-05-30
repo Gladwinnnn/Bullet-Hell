@@ -20,8 +20,6 @@ public class EnemyReflect : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("hihih" + collision);
-
         if (collision.gameObject.layer == 10) return;
 
         Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
