@@ -15,15 +15,19 @@ public class EnemySpawner : MonoBehaviour
     float countDown = 60f;
     bool spawnNextWave = false;
 
-    IEnumerator Start()
+    void Update()
     {
         countDown -= Time.deltaTime;
+        Debug.Log(countDown);
+    }
 
+    IEnumerator Start()
+    {
         while(spawn)
         {
             yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
             if (countDown <= 0) spawnNextWave = true;
-            
+
             if (numberOfEnemies <= 20 && !spawnNextWave)
             {
                 SpawnFirstWave();
