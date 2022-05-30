@@ -14,6 +14,17 @@ public class Level : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
+        if (buildIndex == 2)
+        {
+            FindObjectOfType<Player>().SetCanShoot();
+        }
+
+        if (buildIndex == 3)
+        {
+            FindObjectOfType<Player>().SetCanShoot();
+            FindObjectOfType<Player>().SetCanGrenade();
+        }
 
     }
 
@@ -36,7 +47,7 @@ public class Level : MonoBehaviour
         // slow down time awhile 
         // die awhile 
         // cross fade 
-        StartCoroutine(SlowTime()); 
+        StartCoroutine(SlowTime());
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1, 3.5f, "fade"));
     }
 

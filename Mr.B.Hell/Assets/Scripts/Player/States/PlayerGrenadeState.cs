@@ -21,6 +21,7 @@ public class PlayerGrenadeState : PlayerAbilityState
         base.Enter();
         
         player.Shoot(playerData.grenadePrefab, playerData.grenadeForce);
+        player.Abilities.OnCooldown(3, playerData.grenadeCoolDown);
         stateMachine.ChangeState(player.MoveState);
         cooldown = playerData.grenadeCoolDown;
     }

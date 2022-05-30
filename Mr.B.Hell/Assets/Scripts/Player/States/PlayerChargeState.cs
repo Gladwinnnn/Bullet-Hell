@@ -32,6 +32,8 @@ public class PlayerChargeState : PlayerAbilityState
         lastChargedTime = Time.time;
         player.Damage = multiplyer == 0 ? multiplyer++ : multiplyer;
         Debug.Log(multiplyer);
+        player.Abilities.OnCooldown(1, playerData.chargeCoolDown);
+
 
     }
 

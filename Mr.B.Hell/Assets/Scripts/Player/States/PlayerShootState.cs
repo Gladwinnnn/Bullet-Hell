@@ -25,6 +25,8 @@ public class PlayerShootState : PlayerAbilityState
     public override void Exit()
     {
         base.Exit();
+        player.Abilities.OnCooldown(2, playerData.shootCoolDown);
+
     }
 
     public override void LogicUpdate()
@@ -36,7 +38,7 @@ public class PlayerShootState : PlayerAbilityState
             stateMachine.ChangeState(player.MoveState);
         }
 
-        if (secondaryAttackInput && Time.time >= lastShootTime + playerData.shootCoolDown)
+        if (secondaryAttackInput && Time.time >= lastShootTime + playerData.timeBetweenShot)
         {
             lastShootTime = Time.time;
             player.Shoot(playerData.bulletPrefab, playerData.shootForce);

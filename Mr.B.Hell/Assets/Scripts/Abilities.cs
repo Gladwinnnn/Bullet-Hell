@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class Abilities : MonoBehaviour
 {
+    [SerializeField]
+    Animator dashAnim, shootAnim, grenadeAnim;
+
     public Image dashImage;
     public float dashCoolDown = 5;
     bool isDashCoolDown = false;
-    public KeyCode dash;
 
     public Image shootImage;
     public float shootCoolDown = 5;
     bool isShootCoolDown = false;
-    public KeyCode shoot;
 
     public Image grenadeImage;
     public float grenadeCoolDown = 5;
     bool isGrenadeCoolDown = false;
-    public KeyCode grenade;
 
     // Start is called before the first frame update
     void Start()
@@ -36,14 +36,30 @@ public class Abilities : MonoBehaviour
         Grenade();
     }
 
+    public void OnCooldown(int type, float cooldown)
+    {
+        switch(type)
+        {
+            case 1: 
+                isDashCoolDown = true;
+                dashCoolDown = cooldown;
+                dashImage.fillAmount = 1;
+                break;
+            case 2:
+                isShootCoolDown = true;
+                shootCoolDown = cooldown;
+                shootImage.fillAmount = 1;
+                break;
+            case 3:
+                isGrenadeCoolDown = true;
+                grenadeCoolDown = cooldown;
+                grenadeImage.fillAmount = 1;
+                break;
+        }
+    }
+
     void Dash()
     {
-        if (Input.GetKey(dash) && !isDashCoolDown)
-        {
-            isDashCoolDown = true;
-            dashImage.fillAmount = 1;
-        }
-
         if (isDashCoolDown)
         {
             dashImage.fillAmount -= 1/ dashCoolDown * Time.deltaTime;
@@ -52,18 +68,13 @@ public class Abilities : MonoBehaviour
             {
                 dashImage.fillAmount = 0;
                 isDashCoolDown = false;
+                dashAnim.SetTrigger("nudge");
             }
         }
     }
 
     void Shoot()
     {
-        if (Input.GetKey(shoot) && !isShootCoolDown)
-        {
-            isShootCoolDown = true;
-            shootImage.fillAmount = 1;
-        }
-
         if (isShootCoolDown)
         {
             shootImage.fillAmount -= 1/ shootCoolDown * Time.deltaTime;
@@ -72,18 +83,13 @@ public class Abilities : MonoBehaviour
             {
                 shootImage.fillAmount = 0;
                 isShootCoolDown = false;
+                shootAnim.SetTrigger("nudge");
             }
         }
     }
 
     void Grenade()
     {
-        if (Input.GetKey(grenade) && !isGrenadeCoolDown)
-        {
-            isGrenadeCoolDown = true;
-            grenadeImage.fillAmount = 1;
-        }
-
         if (isGrenadeCoolDown)
         {
             grenadeImage.fillAmount -= 1/ grenadeCoolDown * Time.deltaTime;
@@ -92,6 +98,7 @@ public class Abilities : MonoBehaviour
             {
                 grenadeImage.fillAmount = 0;
                 isGrenadeCoolDown = false;
+                grenadeAnim.SetTrigger("nudge");
             }
         }
     }

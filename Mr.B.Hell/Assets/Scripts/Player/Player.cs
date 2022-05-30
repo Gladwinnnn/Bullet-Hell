@@ -51,6 +51,8 @@ public class Player : MonoBehaviour
 
     public CameraShake CameraShake { get; private set; }
     public Level Level { get; private set; }
+    public Abilities Abilities { get; private set; }
+
     #endregion
 
     private void Awake()
@@ -77,14 +79,20 @@ public class Player : MonoBehaviour
         Health = new PlayerHealth(playerData);
         CameraShake = FindObjectOfType<CameraShake>();
         Level = FindObjectOfType<Level>();
+        Abilities = FindObjectOfType<Abilities>();
 
         StateMachine.Initialize(MoveState);
 
-        CanShoot = true;
-        CanGrenade = true;
+        //CanShoot = true;
+        //CanGrenade = true;
 
         lastHitTime = playerData.knockbackTime;
         lastImmuneTime = playerData.immunityTime;
+
+        Abilities.OnCooldown(1, playerData.chargeCoolDown);
+        Abilities.OnCooldown(2, playerData.shootCoolDown);
+        Abilities.OnCooldown(3, playerData.grenadeCoolDown);
+
     }
 
     private void Update()
@@ -189,4 +197,6 @@ public class Player : MonoBehaviour
         Destroy(temp, 2f);
     }
 
+    public void SetCanShoot() => CanShoot = true;
+    public void SetCanGrenade() => CanGrenade = true;
 }
