@@ -8,11 +8,15 @@ public class Timer : MonoBehaviour
     private static Timer thisInstance;
     [SerializeField] TextMeshProUGUI timerText;
 
+    Level level;
+
     bool playing = true;
     float theTime = 0 , speed = 1;
     string finishTime = "";
     void Awake()
     {
+        level = FindObjectOfType<Level>();
+
         if (thisInstance == null)
         {
             thisInstance = this;
@@ -27,6 +31,11 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (level == null)
+        {
+            Finish();
+        }
+
         if (playing)
         {
             theTime += Time.deltaTime * speed;
