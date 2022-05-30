@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6987518552705486159
 Transform:
   m_ObjectHideFlags: 0
@@ -234,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifePoints: 10
   moveSpeed: 0.3
+  scoreValue: 4
   rotate: 1
   rotateSpeed: 0.3
 --- !u!58 &983772476

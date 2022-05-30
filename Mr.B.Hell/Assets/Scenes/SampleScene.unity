@@ -34315,6 +34315,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1313713817292996086, guid: 9d63bff060a42d349a195718a9c29119, type: 3}
+      propertyPath: scoreValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1313713817292996087, guid: 9d63bff060a42d349a195718a9c29119, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy
@@ -34383,6 +34387,10 @@ PrefabInstance:
     - target: {fileID: 6987518552705486192, guid: e5843796b8c11e443b1643525c59c5aa, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987518552705486193, guid: e5843796b8c11e443b1643525c59c5aa, type: 3}
+      propertyPath: scoreValue
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5843796b8c11e443b1643525c59c5aa, type: 3}
@@ -38277,6 +38285,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 505716380666370063, guid: 1575650da764b7f4489c35b469eb6a23, type: 3}
+      propertyPath: scoreValue
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 505716380666370063, guid: 1575650da764b7f4489c35b469eb6a23, type: 3}
       propertyPath: enemyBullet
       value: 
       objectReference: {fileID: 9204125825692527862, guid: 0457aa01ea3cee14799203e7f266dead, type: 3}
@@ -38452,6 +38464,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3368661762168746693, guid: 458a67bfc888c3945b9e946d32245003, type: 3}
+      propertyPath: scoreValue
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 458a67bfc888c3945b9e946d32245003, type: 3}
 --- !u!1001 &5835716859001536111
@@ -38461,6 +38477,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5835716858130903885, guid: 1edecbf3c7c445e4faa79f64938da0f3, type: 3}
+      propertyPath: scoreValue
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5835716858130903886, guid: 1edecbf3c7c445e4faa79f64938da0f3, type: 3}
       propertyPath: m_RootOrder
       value: 7

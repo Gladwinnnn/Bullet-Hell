@@ -129,7 +129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3368661762168746689
 Transform:
   m_ObjectHideFlags: 0
@@ -234,6 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifePoints: 5
   moveSpeed: 1
+  scoreValue: 2
   enemyBullet: {fileID: 9204125825692527862, guid: 51689af77886ce3408797836e7402544, type: 3}
   projectileSpeed: 5
   firePoint: {fileID: 6036864819283491259}
