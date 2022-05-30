@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth
 {
-    int health;
+    public int health { get; private set; }
 
     public PlayerHealth(PlayerData data)
     {

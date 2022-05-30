@@ -12,6 +12,14 @@ public class Health : MonoBehaviour
     public Sprite fullLifeBar;
     public Sprite emptyLifeBar;
 
+    Player player;
+
+    void Start()
+    {
+        player = FindObjectOfType<Player>();
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -19,6 +27,8 @@ public class Health : MonoBehaviour
         {
             health = numberOfLifeBar;
         }
+
+        health = player.Health.health;
 
         for (int i = 0; i < lifeBar.Length; i++)
         {
