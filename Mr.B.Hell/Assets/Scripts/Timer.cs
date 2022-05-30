@@ -31,11 +31,6 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (level == null)
-        {
-            Finish();
-        }
-
         if (playing)
         {
             theTime += Time.deltaTime * speed;

@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
     {
         numberOfEnemies = FindObjectsOfType<Enemy>().Length;
 
-        if (level == 1)
+        if (level == 1 || level == 2)
         {
             countDown -= Time.deltaTime;
             if (countDown <= 0) spawnSecondWave = true;
@@ -65,7 +65,8 @@ public class EnemySpawner : MonoBehaviour
             while(spawn)
             {
                 yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
-                if (numberOfEnemies <= maxNumberOfEnemies) SpawnEnemies();
+                if (numberOfEnemies <= 60 && spawnSecondWave) SpawnEnemies();
+                else if (numberOfEnemies <= maxNumberOfEnemies) SpawnEnemies();
             }
         }
         else if (level == 2)

@@ -25,7 +25,10 @@ public class Level : MonoBehaviour
             FindObjectOfType<Player>().SetCanShoot();
             FindObjectOfType<Player>().SetCanGrenade();
         }
-
+        if (buildIndex == 4)
+        {
+            FindObjectOfType<Timer>().Finish();
+        }
     }
 
     // Update is called once per frame
