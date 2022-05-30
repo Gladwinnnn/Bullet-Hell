@@ -37660,27 +37660,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f163c01c85fa0448a57d8526ddef445, type: 3}
---- !u!1 &8152250972601684023 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8989418415678812643, guid: 9f163c01c85fa0448a57d8526ddef445, type: 3}
-  m_PrefabInstance: {fileID: 8152250972601684022}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8152250972601684024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8152250972601684023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f3c4aff12e315b4ca4649e984b96b71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heartImages:
-  - {fileID: 1835873622985839338}
-  - {fileID: 1835873622365358618}
-  - {fileID: 1835873623734006864}
-  - {fileID: 1835873623320843998}
-  - {fileID: 1835873622131225151}
-  emptyHeart: {fileID: 21300000, guid: 363559ebe7b61c246b253c34f6d2293f, type: 3}
