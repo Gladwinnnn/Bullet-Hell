@@ -5,49 +5,31 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int health;
-    public int numberOfLifeBar;
-
-    public Image[] lifeBar;
-    public Sprite fullLifeBar;
-    public Sprite emptyLifeBar;
+    [SerializeField] Image[] heartImages;
+    [SerializeField] Sprite emptyHeart;
 
     Player player;
 
+    // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (health > numberOfLifeBar)
+        HealthRemaining(player.Health.health);
+    }
+
+    public void HealthRemaining(int remaining)
+    {
+        for(int i = 0; i < heartImages.Length; i++)
         {
-            health = numberOfLifeBar;
-        }
-
-        health = player.Health.health;
-
-        for (int i = 0; i < lifeBar.Length; i++)
-        {
-            if (i < health)
+            if(i > remaining - 1)
             {
-                lifeBar[i].sprite = fullLifeBar;
-            }
-            else
-            {
-                lifeBar[i].sprite = emptyLifeBar;
-            }
-
-            if (i < numberOfLifeBar)
-            {
-                lifeBar[i].enabled = true;
-            }
-            else
-            {
-                lifeBar[i].enabled = true;
+                heartImages[i].sprite = emptyHeart;
+                break;
             }
         }
     }
