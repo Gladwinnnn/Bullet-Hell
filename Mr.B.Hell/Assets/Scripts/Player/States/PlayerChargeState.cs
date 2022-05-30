@@ -49,6 +49,7 @@ public class PlayerChargeState : PlayerAbilityState
         {
             multiplyer++;
             lastChargedTime = Time.time;
+            player.dashEffect.Play();
         }
     }
 

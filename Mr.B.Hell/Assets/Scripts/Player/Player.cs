@@ -24,8 +24,11 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private Transform firePoint;
+    
     [SerializeField]
     private GameObject hitParticle;
+
+    public ParticleSystem dashEffect;
 
     public bool IsHit { get; private set; }
     public bool IsImmune { get; private set; }
