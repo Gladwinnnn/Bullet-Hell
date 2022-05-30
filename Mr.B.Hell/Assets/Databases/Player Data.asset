@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playArea: {x: 19.5, y: 19.5}
   health: 5
-  knockbackForce: 30
+  knockbackForce: 18
   knockbackTime: 0.15
   immunityTime: 0.3
   moveForce: 10
