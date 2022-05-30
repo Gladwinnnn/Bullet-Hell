@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     public PlayerHealth Health { get; private set; }
 
     public CameraShake CameraShake { get; private set; }
-
+    public Level Level { get; private set; }
     #endregion
 
     private void Awake()
@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
         Movement = new PlayerMovement(this, playerData, RB, transform);
         Health = new PlayerHealth(playerData);
         CameraShake = FindObjectOfType<CameraShake>();
+        Level = FindObjectOfType<Level>();
 
         StateMachine.Initialize(MoveState);
 
@@ -129,10 +130,13 @@ public class Player : MonoBehaviour
             return;
         }
 
+        //push player away
         Vector2 difference = collision.transform.position - transform.position;
         difference = difference.normalized * playerData.knockbackForce;
         //difference = difference * playerData.knockbackForce;
         RB.AddForce(-difference, ForceMode2D.Impulse);
+
+        //enemy bullet
         if (collision.gameObject.layer == 8)
             Destroy(collision.gameObject);
     }

@@ -24,7 +24,7 @@ public class PlayerDeathState : PlayerState
         base.Enter();
         mat = player.transform.GetChild(0).GetComponent<SpriteRenderer>().material;
         Dead();
-
+        player.Level.PlayerIsDead();
     }
 
     public override void Exit()
