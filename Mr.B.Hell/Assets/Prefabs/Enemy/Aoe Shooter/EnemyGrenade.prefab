@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c6192dcfd806a7944b7626b27ae25507, type: 3}
-  m_Color: {r: 1, g: 0.12941177, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.12941177, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -176,8 +176,8 @@ MonoBehaviour:
   explodeTime: 3
   grenadeCountTime: 0.7
   color:
-  - {r: 1, g: 0.12941177, b: 0, a: 1}
-  - {r: 1, g: 0.03137255, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.12941177, a: 1}
+  - {r: 1, g: 0.38597697, b: 0, a: 1}
   layerToChange: 11
 --- !u!1 &6093439615506132750
 GameObject:
@@ -315,6 +315,18 @@ PrefabInstance:
     - target: {fileID: 8986577523535112860, guid: 4a9fa29cd49df4e4c8afbece52c867c2, type: 3}
       propertyPath: ShapeModule.radius.value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986577523535112860, guid: 4a9fa29cd49df4e4c8afbece52c867c2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.12941177
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986577523535112860, guid: 4a9fa29cd49df4e4c8afbece52c867c2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8986577523535112860, guid: 4a9fa29cd49df4e4c8afbece52c867c2, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8986577523535112860, guid: 4a9fa29cd49df4e4c8afbece52c867c2, type: 3}
       propertyPath: UVModule.sprites.Array.data[0].sprite

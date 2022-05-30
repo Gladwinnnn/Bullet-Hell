@@ -19,9 +19,9 @@ MonoBehaviour:
   immunityTime: 0.3
   moveForce: 10
   chargeCoolDown: 3
-  shake: 0.05
-  maxChargeTime: 4
-  chargeTime: 1
+  shake: 0.1
+  maxChargeTime: 2.5
+  chargeTime: 0.7
   dashForce: 40
   dashTime: 0.3
   echoTime: 0.05

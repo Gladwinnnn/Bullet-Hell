@@ -79,8 +79,8 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 1
-  m_Color: {r: 1, g: 0.12941177, b: 0, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0, g: 1, b: 0.12941177, a: 1}
+  m_Intensity: 1.5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -129,7 +129,7 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0
+  m_PointLightInnerRadius: 0.6
   m_PointLightOuterRadius: 5.01
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
@@ -220,7 +220,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: abb4b404dc5e49847a47737bfc30cd2e, type: 3}
-  m_Color: {r: 1, g: 0.1271762, b: 0, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.12823725, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -265,7 +265,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.24, y: 0.24}
+  m_Size: {x: 1, y: 1.2}
   m_Direction: 0
 --- !u!114 &5835716858130903885
 MonoBehaviour:

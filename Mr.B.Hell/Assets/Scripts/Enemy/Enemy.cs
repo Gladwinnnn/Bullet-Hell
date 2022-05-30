@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public Player player { get; private set; }
 
     Material mat;
-    Rigidbody2D rb;
+    public Rigidbody2D rb { get; private set; }
 
     float scale = 30f;
     float fade = 1f;

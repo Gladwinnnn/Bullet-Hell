@@ -36,6 +36,7 @@ public class ImmobileShooter : Enemy
         if (isDead) return;   
         Fire();
         CRotate();
+        rb.velocity = Vector2.zero;
     }
 
     void Fire()
