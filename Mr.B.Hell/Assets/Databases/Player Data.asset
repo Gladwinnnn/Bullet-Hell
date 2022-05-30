@@ -29,7 +29,7 @@ MonoBehaviour:
   shootCoolDown: 2
   timeBetweenShot: 0.2
   shootForce: 10
-  moveForceRestriction: 5
+  moveForceRestriction: 2.9
   bulletPrefab: {fileID: 194219363435563332, guid: 75933ef53e2691543aab98d77398cfe4, type: 3}
   shakeAmount: 1
   grenadeCoolDown: 10

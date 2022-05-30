@@ -30,7 +30,9 @@ public class PlayerChargeState : PlayerAbilityState
         base.Exit();
         player.transform.GetChild(0).localPosition = orginalTransform;
         lastChargedTime = Time.time;
-        player.Damage = multiplyer == 0 ? multiplyer++ : multiplyer;
+        if (multiplyer == 0) multiplyer++;
+        if (multiplyer == 3) multiplyer = 5;
+        player.Damage = multiplyer;
         Debug.Log(multiplyer);
         player.Abilities.OnCooldown(1, playerData.chargeCoolDown);
 
