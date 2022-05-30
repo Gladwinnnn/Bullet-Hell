@@ -8,6 +8,8 @@ public class Level : MonoBehaviour
     [SerializeField] Animator crossfade;
 
     [SerializeField] float time = 1f;
+    [SerializeField] float timeSlowed;
+    [SerializeField] float howLong;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +20,10 @@ public class Level : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //if(Input.GetKeyDown(KeyCode.V))
+        //{
+        //    StartCoroutine(SlowTime());
+        //}
     }
 
     public void StartGame()
@@ -31,8 +36,15 @@ public class Level : MonoBehaviour
         // slow down time awhile 
         // die awhile 
         // cross fade 
-        // check if got next scene? 
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1, 2, "fade"));
+        StartCoroutine(SlowTime()); 
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1, 3.5f, "fade"));
+    }
+
+    IEnumerator SlowTime()
+    {
+        Time.timeScale = timeSlowed;
+        yield return new WaitForSecondsRealtime(howLong);
+        Time.timeScale = 1;
     }
 
     private void GameOver()

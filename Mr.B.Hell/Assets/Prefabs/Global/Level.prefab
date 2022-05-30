@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crossfade: {fileID: 2371844758316040274}
   time: 1
+  timeSlowed: 0.2
+  howLong: 1
 --- !u!1 &2371844758316040275
 GameObject:
   m_ObjectHideFlags: 0
