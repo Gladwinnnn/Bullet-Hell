@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -11,24 +12,69 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject[] enemy;
     [SerializeField] Vector2 playArea;
     [SerializeField] int numberOfEnemies;
+    [SerializeField] int maxNumberOfEnemies = 20;
 
     float countDown = 60f;
-    bool spawnNextWave = false;
+    float secondCountDown = 120f;
+    float finalCountDown = 180f;
+
+    bool spawnSecondWave = false;
+    bool spawnThirdWave = false;
+    bool spawnLastWave = false;
+    int level;
 
     void Update()
     {
         numberOfEnemies = FindObjectsOfType<Enemy>().Length;
-        countDown -= Time.deltaTime;
-        if (countDown <= 0) spawnNextWave = true;
+
+        if (level == 1 || level == 2)
+        {
+            countDown -= Time.deltaTime;
+            if (countDown <= 0) spawnSecondWave = true;
+        }
+        else if (level == 3)
+        {
+            countDown -= Time.deltaTime;
+            secondCountDown -= Time.deltaTime;
+            finalCountDown -= Time.deltaTime;
+
+            if (countDown <= 0) spawnSecondWave = true;
+            if (secondCountDown <= 0) spawnThirdWave = true;
+            if (finalCountDown <=0) spawnLastWave = true;
+        }
     }
 
     IEnumerator Start()
     {
-        while(spawn)
+        level = SceneManager.GetActiveScene().buildIndex;
+
+        if (level == 1) 
         {
-            yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
-            if (numberOfEnemies <= 20 && !spawnNextWave) SpawnFirstWave();
-            else if (numberOfEnemies <= 20 && spawnNextWave) SpawnEnemies();
+            while(spawn)
+            {
+                yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
+                if (numberOfEnemies <= maxNumberOfEnemies) SpawnEnemies();
+            }
+        }
+        else if (level == 2)
+        {
+            while(spawn)
+            {
+                yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
+                if (numberOfEnemies <= maxNumberOfEnemies && !spawnSecondWave) SpawnFirstWave();
+                else if (numberOfEnemies <= maxNumberOfEnemies && spawnSecondWave) SpawnEnemies();
+            }
+        }
+        else if (level == 3)
+        {
+            while(spawn)
+            {
+                yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
+                if (numberOfEnemies <= maxNumberOfEnemies && !spawnSecondWave) SpawnFirstWave();
+                else if (numberOfEnemies <= maxNumberOfEnemies && spawnSecondWave) SpawnSecondWave();
+                else if (numberOfEnemies <= maxNumberOfEnemies && spawnThirdWave) SpawnThirdWave();
+                else if (numberOfEnemies <= maxNumberOfEnemies && spawnLastWave) SpawnEnemies();
+            }
         }
     }
 
@@ -52,5 +98,23 @@ public class EnemySpawner : MonoBehaviour
         float randomXCoordinates = Random.Range(-playArea.y, playArea.y);
         Vector2 spawnLocation = new Vector2(randomXCoordinates, randomYCoordinates);
         Instantiate(enemy[0], spawnLocation, Quaternion.identity);
+    }
+
+    void SpawnSecondWave()
+    {
+        float randomYCoordinates = Random.Range(-playArea.x, playArea.x);
+        float randomXCoordinates = Random.Range(-playArea.y, playArea.y);
+        Vector2 spawnLocation = new Vector2(randomXCoordinates, randomYCoordinates);
+        int enemyToSpawn = Random.Range(0,2);
+        Instantiate(enemy[enemyToSpawn], spawnLocation, Quaternion.identity);
+    }
+
+    void SpawnThirdWave()
+    {
+        float randomYCoordinates = Random.Range(-playArea.x, playArea.x);
+        float randomXCoordinates = Random.Range(-playArea.y, playArea.y);
+        Vector2 spawnLocation = new Vector2(randomXCoordinates, randomYCoordinates);
+        int enemyToSpawn = Random.Range(0,4);
+        Instantiate(enemy[enemyToSpawn], spawnLocation, Quaternion.identity);
     }
 }
