@@ -109,8 +109,11 @@ public class Player : MonoBehaviour
     {
         if (IsImmune) return;
 
-        if (StateMachine.CurrentState == DashState) Dash(collision);
-
+        if (StateMachine.CurrentState == DashState)
+        {
+            Dash(collision);
+            return;
+        }
         IsHit = true;
         IsImmune = true;
 
