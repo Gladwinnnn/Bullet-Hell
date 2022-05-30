@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 3368661762168746690}
   - component: {fileID: 3368661762168746693}
   - component: {fileID: 591818612}
+  - component: {fileID: 8472982823542735392}
   m_Layer: 6
   m_Name: ShooterEnemy
   m_TagString: Untagged
@@ -254,6 +255,26 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!95 &8472982823542735392
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3368661762168746692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b6257f32626dc0a46b334933220d32dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6036864819283491256
 GameObject:
   m_ObjectHideFlags: 0
