@@ -10,15 +10,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float maxSpawnDelay = 2f;
     [SerializeField] GameObject[] enemy;
     [SerializeField] Vector2 playArea;
+    [SerializeField] int numberOfEnemies;
 
-    int numberOfEnemies;
     float countDown = 60f;
     bool spawnNextWave = false;
 
     void Update()
     {
+        numberOfEnemies = FindObjectsOfType<Enemy>().Length;
         countDown -= Time.deltaTime;
-        Debug.Log(countDown);
         if (countDown <= 0) spawnNextWave = true;
     }
 
@@ -27,16 +27,8 @@ public class EnemySpawner : MonoBehaviour
         while(spawn)
         {
             yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
-            if (numberOfEnemies <= 20 && !spawnNextWave)
-            {
-                SpawnFirstWave();
-                numberOfEnemies++;
-            }
-            else if (numberOfEnemies <= 20 && spawnNextWave)
-            {
-                SpawnEnemies();
-                numberOfEnemies++;
-            }
+            if (numberOfEnemies <= 20 && !spawnNextWave) SpawnFirstWave();
+            else if (numberOfEnemies <= 20 && spawnNextWave) SpawnEnemies();
         }
     }
 
