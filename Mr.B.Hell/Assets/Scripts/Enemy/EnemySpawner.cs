@@ -14,6 +14,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] int numberOfEnemies;
     [SerializeField] int maxNumberOfEnemies = 20;
 
+    float delayForEnemyToSpawn = 2.5f;
     float countDown = 60f;
     float secondCountDown = 120f;
     float finalCountDown = 180f;
@@ -26,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         numberOfEnemies = FindObjectsOfType<Enemy>().Length;
+        delayForEnemyToSpawn -= Time.deltaTime;
 
         if (level == 1 || level == 2)
         {
@@ -47,33 +49,36 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator Start()
     {
         level = SceneManager.GetActiveScene().buildIndex;
-
-        if (level == 1) 
+        
+        if (delayForEnemyToSpawn <= 0)
         {
-            while(spawn)
+            if (level == 1) 
             {
-                yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
-                if (numberOfEnemies <= maxNumberOfEnemies) SpawnEnemies();
+                while(spawn)
+                {
+                    yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
+                    if (numberOfEnemies <= maxNumberOfEnemies) SpawnEnemies();
+                }
             }
-        }
-        else if (level == 2)
-        {
-            while(spawn)
+            else if (level == 2)
             {
-                yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
-                if (numberOfEnemies <= maxNumberOfEnemies && !spawnSecondWave) SpawnFirstWave();
-                else if (numberOfEnemies <= maxNumberOfEnemies && spawnSecondWave) SpawnEnemies();
+                while(spawn)
+                {
+                    yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
+                    if (numberOfEnemies <= maxNumberOfEnemies && !spawnSecondWave) SpawnFirstWave();
+                    else if (numberOfEnemies <= maxNumberOfEnemies && spawnSecondWave) SpawnEnemies();
+                }
             }
-        }
-        else if (level == 3)
-        {
-            while(spawn)
+            else if (level == 3)
             {
-                yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
-                if (numberOfEnemies <= maxNumberOfEnemies && !spawnSecondWave) SpawnFirstWave();
-                else if (numberOfEnemies <= maxNumberOfEnemies && spawnSecondWave) SpawnSecondWave();
-                else if (numberOfEnemies <= maxNumberOfEnemies && spawnThirdWave) SpawnThirdWave();
-                else if (numberOfEnemies <= maxNumberOfEnemies && spawnLastWave) SpawnEnemies();
+                while(spawn)
+                {
+                    yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
+                    if (numberOfEnemies <= maxNumberOfEnemies && !spawnSecondWave) SpawnFirstWave();
+                    else if (numberOfEnemies <= maxNumberOfEnemies && spawnSecondWave) SpawnSecondWave();
+                    else if (numberOfEnemies <= maxNumberOfEnemies && spawnThirdWave) SpawnThirdWave();
+                    else if (numberOfEnemies <= maxNumberOfEnemies && spawnLastWave) SpawnEnemies();
+                }
             }
         }
     }
