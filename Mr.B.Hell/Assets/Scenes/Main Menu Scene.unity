@@ -36562,7 +36562,19 @@ PrefabInstance:
       value: bg
       objectReference: {fileID: 0}
     - target: {fileID: 3267112367842531029, guid: 268f76a0745829d42b7b4637aa2185ab, type: 3}
+      propertyPath: sounds.Array.data[0].pitch
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267112367842531029, guid: 268f76a0745829d42b7b4637aa2185ab, type: 3}
+      propertyPath: sounds.Array.data[1].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267112367842531029, guid: 268f76a0745829d42b7b4637aa2185ab, type: 3}
       propertyPath: sounds.Array.data[1].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267112367842531029, guid: 268f76a0745829d42b7b4637aa2185ab, type: 3}
+      propertyPath: sounds.Array.data[1].volumeVariance
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7194306027551810325, guid: 268f76a0745829d42b7b4637aa2185ab, type: 3}
