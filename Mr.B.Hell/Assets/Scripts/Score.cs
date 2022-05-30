@@ -10,9 +10,6 @@ public class Score : MonoBehaviour
 
     GameSession gameSession;
 
-    bool playing = true;
-    string finishTime = "";
-
     void Awake()
     {
         if (thisInstance == null)
