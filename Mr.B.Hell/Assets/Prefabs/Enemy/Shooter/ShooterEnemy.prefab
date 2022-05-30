@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8b62e66318e9349afec50cc26462e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifePoints: 5
+  lifePoints: 3
   moveSpeed: 1
   scoreValue: 2
   enemyBullet: {fileID: 9204125825692527862, guid: 51689af77886ce3408797836e7402544, type: 3}
