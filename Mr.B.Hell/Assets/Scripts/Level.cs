@@ -21,6 +21,11 @@ public class Level : MonoBehaviour
         
     }
 
+    public void StartGame()
+    {
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1, 0, "fade"));
+    }
+
     public void PlayerIsDead()
     {
         // slow down time awhile 
