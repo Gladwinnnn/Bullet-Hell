@@ -48,6 +48,7 @@ public class AOEShooterEnemy2 : Enemy
                 Attack();
                 break;
         }
+        rb.velocity = Vector2.zero;
     }
     private void PlayerDistance()
     {
