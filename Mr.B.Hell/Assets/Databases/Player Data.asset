@@ -26,7 +26,7 @@ MonoBehaviour:
   dashTime: 0.3
   echoTime: 0.05
   echo: {fileID: 1172534622358889483, guid: 5f6bef217ddd3e644bc5d29c627f0804, type: 3}
-  shootCoolDown: 2
+  shootCoolDown: 0
   timeBetweenShot: 0.2
   shootForce: 10
   moveForceRestriction: 2.9

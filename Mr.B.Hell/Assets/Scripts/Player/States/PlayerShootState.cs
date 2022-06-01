@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerShootState : PlayerAbilityState
 {
     float lastShootTime;
+    int shootingLock;
     public PlayerShootState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
@@ -20,6 +21,7 @@ public class PlayerShootState : PlayerAbilityState
         player.Shoot(playerData.bulletPrefab, playerData.shootForce);
         lastShootTime = startTime;
         ShakeCam();
+        shootingLock = 1;
     }
 
     public override void Exit()
@@ -33,16 +35,18 @@ public class PlayerShootState : PlayerAbilityState
     {
         base.LogicUpdate();
 
-        if(!secondaryAttackInput)
+        Debug.Log(shootingLock);
+        if(!secondaryAttackInput && shootingLock >= 3)
         {
             stateMachine.ChangeState(player.MoveState);
         }
 
-        if (secondaryAttackInput && Time.time >= lastShootTime + playerData.timeBetweenShot)
+        if (Time.time >= lastShootTime + playerData.timeBetweenShot)
         {
             lastShootTime = Time.time;
             player.Shoot(playerData.bulletPrefab, playerData.shootForce);
             ShakeCam();
+            shootingLock++;
         }
 
         if (player.CanGrenade && specialAttackInput && player.GrenadeState.canFire())
