@@ -43,6 +43,7 @@ public class Timer : MonoBehaviour
     }
     public void Finish()
     {
+        print("calling finish");
         playing = false;
         finishTime = timerText.text;
     }
