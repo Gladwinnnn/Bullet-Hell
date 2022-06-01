@@ -38,4 +38,9 @@ public class GameSession : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void ResetScore()
+    {
+        score = 0;
+    }
 }
