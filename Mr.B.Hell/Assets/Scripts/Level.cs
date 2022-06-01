@@ -69,6 +69,7 @@ public class Level : MonoBehaviour
     public void Restart()
     {
         StartCoroutine(LoadLevel(1, 0, "fade"));
+        FindObjectOfType<Timer>().Reset();
     }
 
     public void PauseGame()

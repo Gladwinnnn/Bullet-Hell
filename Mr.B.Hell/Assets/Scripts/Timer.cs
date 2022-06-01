@@ -47,6 +47,12 @@ public class Timer : MonoBehaviour
         finishTime = timerText.text;
     }
 
+    public void Reset()
+    {
+        playing = true;
+        theTime = 0;
+    }
+
     public string GetFinishTime() { return finishTime; }
 
 }
