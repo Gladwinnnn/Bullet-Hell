@@ -370,6 +370,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6751713421765496364, guid: 9c5a50fcb1b452344bcf9d609e5a574f, type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 277557106}
     - target: {fileID: 6751713421802476677, guid: 9c5a50fcb1b452344bcf9d609e5a574f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -378,10 +382,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6751713422154128673, guid: 9c5a50fcb1b452344bcf9d609e5a574f, type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 277557106}
     - target: {fileID: 6751713422154128676, guid: 9c5a50fcb1b452344bcf9d609e5a574f, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6751713422609507889, guid: 9c5a50fcb1b452344bcf9d609e5a574f, type: 3}
+      propertyPath: m_BoundingShape2D
+      value: 
+      objectReference: {fileID: 277557106}
     - target: {fileID: 6751713422609507895, guid: 9c5a50fcb1b452344bcf9d609e5a574f, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
