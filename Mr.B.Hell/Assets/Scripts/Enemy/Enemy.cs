@@ -82,6 +82,7 @@ public class Enemy : MonoBehaviour
     public void Move()
     {
         rb.velocity = Vector2.zero;
+        if (!player) return;
         var targetPosition = player.transform.position;
         var movementThisFrame = moveSpeed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, movementThisFrame);
@@ -89,6 +90,7 @@ public class Enemy : MonoBehaviour
 
     public void Rotate()
     {
+        if (!player) return;
         Vector2 distance = player.transform.position - transform.position;
         transform.up = distance;
     }
